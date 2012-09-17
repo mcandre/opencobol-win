@@ -1,0 +1,260 @@
+OpenCOBOL 1.1 06FEB2009 Source Listing - OCic Copyright (C) 2009-2010, Gary L. Cutler, GPL                                   2010/09/10
+                                                                                                       E:/OpenCOBOL/samples/COBDUMP.cbl
+Line   Statement
+====== ================================================================================================================================
+     1        IDENTIFICATION DIVISION.
+     2        PROGRAM-ID.   COBDUMP.
+     3       *****************************************************************
+     4       ** This is an OpenCOBOL subroutine that will generate a        **
+     5       ** formatted Hex/Char dump of a storage area.  To use this     **
+     6       ** subroutine, simply CALL it as follows:                      **
+     7       **                                                             **
+     8       ** CALL "COBDUMP" USING <data-item>                            **
+     9       **                    [ <length> ]                             **
+    10       **                                                             **
+    11       ** If specified, the <length> argument specifies how many      **
+    12       ** bytes of <data-item> are to be dumped.  If absent, all of   **
+    13       ** <data-item> will be dumped (i.e. LENGTH(<data-item>) will   **
+    14       ** be assumed for <length>).                                   **
+    15       **                                                             **
+    16       ** >>> Note that the subroutine name MUST be specified in  <<< **
+    17       ** >>> UPPERCASE                                           <<< **
+    18       **                                                             **
+    19       ** The dump is generated to STDERR, so you may pipe it to a    **
+    20       ** file when you execute your program using "2> file".         **
+    21       **                                                             **
+    22       ** AUTHOR:       GARY L. CUTLER                                **
+    23       **               CutlerGL@gmail.com                            **
+    24       **                                                             **
+    25       ** NOTE:         The author has a sentimental attachment to    **
+    26       **               this subroutine - it's been around since 1971 **
+    27       **               and it's been converted to and run on 10 dif- **
+    28       **               ferent operating system/compiler environments **
+    29       **                                                             **
+    30       ** DATE-WRITTEN: October 14, 1971                              **
+    31       **                                                             **
+    32       *****************************************************************
+    33       **  DATE  CHANGE DESCRIPTION                                   **
+    34       ** ====== ==================================================== **
+    35       ** GC1071 Initial coding - Univac Dept. of Defense COBOL '68   **
+    36       ** GC0577 Converted to Univac ASCII COBOL (ACOB) - COBOL '74   **
+    37       ** GC1182 Converted to Univac UTS4000 COBOL - COBOL '74 w/     **
+    38       **        SCREEN SECTION enhancements                          **
+    39       ** GC0883 Converted to Honeywell/Bull COBOL - COBOL '74        **
+    40       ** GC0983 Converted to IBM VS COBOL - COBOL '74                **
+    41       ** GC0887 Converted to IBM VS COBOL II - COBOL '85             **
+    42       ** GC1294 Converted to Micro Focus COBOL V3.0 - COBOL '85 w/   **
+    43       **        extensions                                           **
+    44       ** GC0703 Converted to Unisys Universal Compiling System (UCS) **
+    45       **        COBOL (UCOB) - COBOL '85                             **
+    46       ** GC1204 Converted to Unisys Object COBOL (OCOB) - COBOL 2002 **
+    47       ** GC0609 Converted to OpenCOBOL 1.1 - COBOL '85 w/ some COBOL **
+    48       **        2002 features                                        **
+    49       ** GC0410 Enhanced to make 2nd argument (buffer length)        **
+    50       **        optional                                             **
+    51       *****************************************************************
+    52        ENVIRONMENT DIVISION.
+    53        CONFIGURATION SECTION.
+    54        REPOSITORY.
+    55            FUNCTION ALL INTRINSIC.
+    56        DATA DIVISION.
+
+OpenCOBOL 1.1 06FEB2009 Source Listing - OCic Copyright (C) 2009-2010, Gary L. Cutler, GPL                                   2010/09/10
+                                                                                                       E:/OpenCOBOL/samples/COBDUMP.cbl
+Line   Statement
+====== ================================================================================================================================
+    57        WORKING-STORAGE SECTION.
+    58        78  Undisplayable-Char-Symbol   VALUE X'F9'.
+    59        01  Addr-Pointer                USAGE POINTER.
+    60        01  Addr-Number                 REDEFINES Addr-Pointer
+    61                                        USAGE BINARY-LONG.
+    62
+    63        01  Addr-Sub                    USAGE BINARY-CHAR.
+    64
+    65        01  Addr-Value                  USAGE BINARY-LONG.
+    66
+    67        01  Buffer-Length               USAGE BINARY-LONG.
+    68
+    69        01  Buffer-Sub           COMP-5 PIC 9(4).
+    70
+    71        01  Hex-Digits                  VALUE '0123456789ABCDEF'.
+    72            05 Hex-Digit                OCCURS 16 TIMES PIC X(1).
+    73
+    74        01  Left-Nibble          COMP-5 PIC 9(1).
+    75        01  Nibble                      REDEFINES Left-Nibble
+    76                                        BINARY-CHAR.
+    77
+    78        01  Output-Detail.
+    79            05 OD-Addr.
+    80               10 OD-Addr-Hex           OCCURS 8 TIMES PIC X.
+    81            05 FILLER                   PIC X(1).
+    82            05 OD-Byte                  PIC Z(3)9.
+    83            05 FILLER                   PIC X(1).
+    84            05 OD-Hex                   OCCURS 16 TIMES.
+    85               10 OD-Hex-1              PIC X.
+    86               10 OD-Hex-2              PIC X.
+    87               10 FILLER                PIC X.
+    88            05 OD-ASCII                 OCCURS 16 TIMES
+    89                                        PIC X.
+    90
+    91        01  Output-Sub           COMP-5 PIC 9(2).
+    92
+    93        01  Output-Header-1.
+    94            05 FILLER                   PIC X(80) VALUE
+    95               '<-Addr-> Byte ' &
+    96               '<---------------- Hexadecimal ----------------> ' &
+    97               '<---- Char ---->'.
+    98
+    99        01  Output-Header-2.
+   100            05 FILLER                   PIC X(80) VALUE
+   101               '======== ==== ' &
+   102               '=============================================== ' &
+   103               '================'.
+   104
+   105        01  PIC-XX.
+   106            05 FILLER                   PIC X VALUE LOW-VALUES.
+   107            05 PIC-X                    PIC X.
+   108        01  PIC-Halfword                REDEFINES PIC-XX
+   109                                        PIC 9(4) COMP-X.
+   110
+   111        01  PIC-X10.
+   112            05 FILLER                   PIC X(2).
+
+OpenCOBOL 1.1 06FEB2009 Source Listing - OCic Copyright (C) 2009-2010, Gary L. Cutler, GPL                                   2010/09/10
+                                                                                                       E:/OpenCOBOL/samples/COBDUMP.cbl
+Line   Statement
+====== ================================================================================================================================
+   113            05 PIC-X8                   PIC X(8).
+   114
+   115        01  Right-Nibble         COMP-5 PIC 9(1).
+   116
+   117        LINKAGE SECTION.
+   118        01  Buffer                      PIC X ANY LENGTH.
+   119
+   120        01  Buffer-Len                  USAGE BINARY-LONG.
+   121
+   122        PROCEDURE DIVISION USING Buffer, OPTIONAL Buffer-Len.
+   123        000-COBDUMP.
+   124            IF NUMBER-OF-CALL-PARAMETERS = 1
+   125                MOVE LENGTH(Buffer) TO Buffer-Length
+   126            ELSE
+   127                MOVE Buffer-Len     TO Buffer-Length
+   128            END-IF
+   129            MOVE SPACES TO Output-Detail
+   130            SET Addr-Pointer TO ADDRESS OF Buffer
+   131            PERFORM 100-Generate-Address
+   132            MOVE 0 TO Output-Sub
+   133            DISPLAY
+   134                Output-Header-1 UPON SYSERR
+   135            END-DISPLAY
+   136            DISPLAY
+   137                Output-Header-2 UPON SYSERR
+   138            END-DISPLAY
+   139            PERFORM VARYING Buffer-Sub FROM 1 BY 1
+   140                      UNTIL Buffer-Sub > Buffer-Length
+   141                ADD 1
+   142                    TO Output-Sub
+   143                END-ADD
+   144                IF Output-Sub = 1
+   145                    MOVE Buffer-Sub TO OD-Byte
+   146                END-IF
+   147                MOVE Buffer (Buffer-Sub : 1) TO PIC-X
+   148                IF (PIC-X < ' ')
+   149                OR (PIC-X > '~')
+   150                    MOVE Undisplayable-Char-Symbol
+   151                      TO OD-ASCII (Output-Sub)
+   152                ELSE
+   153                    MOVE PIC-X
+   154                      TO OD-ASCII (Output-Sub)
+   155                END-IF
+   156                DIVIDE PIC-Halfword BY 16
+   157                    GIVING Left-Nibble
+   158                    REMAINDER Right-Nibble
+   159                END-DIVIDE
+   160                ADD 1 TO Left-Nibble
+   161                         Right-Nibble
+   162                END-ADD
+   163                MOVE Hex-Digit (Left-Nibble)
+   164                  TO OD-Hex-1 (Output-Sub)
+   165                MOVE Hex-Digit (Right-Nibble)
+   166                  TO OD-Hex-2 (Output-Sub)
+   167                IF Output-Sub = 16
+   168                    DISPLAY
+
+OpenCOBOL 1.1 06FEB2009 Source Listing - OCic Copyright (C) 2009-2010, Gary L. Cutler, GPL                                   2010/09/10
+                                                                                                       E:/OpenCOBOL/samples/COBDUMP.cbl
+Line   Statement
+====== ================================================================================================================================
+   169                        Output-Detail UPON SYSERR
+   170                    END-DISPLAY
+   171                    MOVE SPACES TO Output-Detail
+   172                    MOVE 0 TO Output-Sub
+   173                    SET Addr-Pointer UP BY 16
+   174                    PERFORM 100-Generate-Address
+   175                END-IF
+   176            END-PERFORM
+   177            IF Output-Sub > 0
+   178                DISPLAY
+   179                    Output-Detail UPON SYSERR
+   180                END-DISPLAY
+   181            END-IF
+   182            EXIT PROGRAM
+   183            .
+   184        100-Generate-Address.
+   185            MOVE 8 TO Addr-Sub
+   186            MOVE Addr-Number TO Addr-Value
+   187            MOVE ALL '0' TO OD-Addr
+   188            PERFORM WITH TEST BEFORE UNTIL Addr-Value = 0
+   189                DIVIDE Addr-Value BY 16
+   190                    GIVING Addr-Value
+   191                    REMAINDER Nibble
+   192                END-DIVIDE
+   193                ADD 1 TO Nibble
+   194                MOVE Hex-Digit (Nibble)
+   195                  TO OD-Addr-Hex (Addr-Sub)
+   196                SUBTRACT 1 FROM Addr-Sub
+   197            END-PERFORM
+   198            .
+   199
+   200
+   201
+
+OpenCOBOL 1.1 06FEB2009 Cross-Reference Listing - OCic Copyright (C) 2009-2010, Gary L. Cutler, GPL                          2010/09/10
+                                                                                                       E:/OpenCOBOL/samples/COBDUMP.cbl
+PROGRAM-ID      Identifier/Register/Function     Defn   Where Defined   References (* = Updated)
+=============== ================================ ====== =============== ===============================================================
+COBDUMP         000-COBDUMP                             PROCEDURE          123
+COBDUMP         100-Generate-Address                184 PROCEDURE          131     174
+COBDUMP         Addr-Number                          60 WORKING-STORAGE    186
+COBDUMP         Addr-Pointer                         59 WORKING-STORAGE     60     130*    173*
+COBDUMP         Addr-Sub                             63 WORKING-STORAGE    185*    195     196
+COBDUMP         Addr-Value                           65 WORKING-STORAGE    186*    188     189     190*
+COBDUMP         Buffer                              118 LINKAGE            122     125     130     147
+COBDUMP         Buffer-Len                          120 LINKAGE            122     127
+COBDUMP         Buffer-Length                        67 WORKING-STORAGE    125*    127*    140
+COBDUMP         Buffer-Sub                           69 WORKING-STORAGE    139*    140     145     147
+COBDUMP         Hex-Digit                            72 WORKING-STORAGE    163     165     194
+COBDUMP         Hex-Digits                           71 WORKING-STORAGE
+COBDUMP         Left-Nibble                          74 WORKING-STORAGE     75     157*    160*    163
+COBDUMP         LENGTH                                  LINKAGE            118     125
+COBDUMP         Nibble                               75 WORKING-STORAGE    191*    193*    194
+COBDUMP         NUMBER-OF-CALL-PARAMETERS               PROCEDURE          124
+COBDUMP         OD-Addr                              79 WORKING-STORAGE    187*
+COBDUMP         OD-Addr-Hex                          80 WORKING-STORAGE    195*
+COBDUMP         OD-ASCII                             88 WORKING-STORAGE    151*    154*
+COBDUMP         OD-Byte                              82 WORKING-STORAGE    145*
+COBDUMP         OD-Hex                               84 WORKING-STORAGE
+COBDUMP         OD-Hex-1                             85 WORKING-STORAGE    164*
+COBDUMP         OD-Hex-2                             86 WORKING-STORAGE    166*
+COBDUMP         Output-Detail                        78 WORKING-STORAGE    129*    169     171*    179
+COBDUMP         Output-Header-1                      93 WORKING-STORAGE    134
+COBDUMP         Output-Header-2                      99 WORKING-STORAGE    137
+COBDUMP         Output-Sub                           91 WORKING-STORAGE    132*    142*    144     151     154     164     166     167
+                                                                           172*    177
+COBDUMP         PIC-Halfword                        108 WORKING-STORAGE    156
+COBDUMP         PIC-X                               107 WORKING-STORAGE    147*    148     149     153
+COBDUMP         PIC-X10                             111 WORKING-STORAGE
+COBDUMP         PIC-X8                              113 WORKING-STORAGE
+COBDUMP         PIC-XX                              105 WORKING-STORAGE    108
+COBDUMP         Right-Nibble                        115 WORKING-STORAGE    158*    161*    165
+COBDUMP         Undisplayable-Char-Symbol            58 WORKING-STORAGE    150

@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="9.4" version="9.5" Modules="simple" RootPath="." Language="en" Id="{1CF820F8-380A-4B03-AB9A-A34EFD6E27DB}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiValidationComponent">
+    <ROW Table="File" Column="Sequence" MinValue="1" MaxValue="32767" Description="Sequence with respect to the media images; order must track cabinet order." Options="0" ColumnType="2" ColumnIndex="7" ColumnSize="2" MsiKey="File#Sequence"/>
+    <ROW Table="Media" Column="LastSequence" MinValue="0" MaxValue="32767" Description="File sequence number for the last file for this media." Options="0" ColumnType="2" ColumnIndex="1" ColumnSize="2" MsiKey="Media#LastSequence"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPPRODUCTICON" Value="opencobol.exe" Type="8"/>
+    <ROW Property="ARPURLINFOABOUT" Value="http://www.opencobol.org/"/>
+    <ROW Property="Manufacturer" Value="The OpenCOBOL Project" ValueLocId="*"/>
+    <ROW Property="ProductCode" Value="1033:{906F5065-7F5C-4F4D-83C7-401C8E228503} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="OpenCobol" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="1.1.0" Type="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{41CB0C3B-48B9-47E3-84A4-71955C778F12}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="BerkeleyDB_Dir" Directory_Parent="documentation_Dir" DefaultDir="Berkel~1|Berkeley DB"/>
+    <ROW Directory="GL_Dir" Directory_Parent="include_Dir" DefaultDir="GL"/>
+    <ROW Directory="GMP_Dir" Directory_Parent="documentation_Dir" DefaultDir="GMP"/>
+    <ROW Directory="MinGWandGNU_Dir" Directory_Parent="documentation_Dir" DefaultDir="MinGWa~1|MinGW and GNU"/>
+    <ROW Directory="OpenCOBOL1.1_Dir" Directory_Parent="documentation_Dir" DefaultDir="OpenCO~1.1|OpenCOBOL 1.1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="__Dir" Directory_Parent="mingw32_Dir" DefaultDir="34~1.5|3.4.5"/>
+    <ROW Directory="bin_Dir" Directory_Parent="APPDIR" DefaultDir="bin"/>
+    <ROW Directory="config_Dir" Directory_Parent="APPDIR" DefaultDir="config"/>
+    <ROW Directory="copy_Dir" Directory_Parent="APPDIR" DefaultDir="copy"/>
+    <ROW Directory="ddk_Dir" Directory_Parent="include_Dir" DefaultDir="ddk"/>
+    <ROW Directory="documentation_Dir" Directory_Parent="APPDIR" DefaultDir="docume~1|documentation"/>
+    <ROW Directory="gcc_Dir" Directory_Parent="lib_Dir" DefaultDir="gcc"/>
+    <ROW Directory="include_1_Dir" Directory_Parent="__Dir" DefaultDir="include"/>
+    <ROW Directory="include_2_Dir" Directory_Parent="installtools_Dir" DefaultDir="include"/>
+    <ROW Directory="include_Dir" Directory_Parent="APPDIR" DefaultDir="include"/>
+    <ROW Directory="installtools_Dir" Directory_Parent="__Dir" DefaultDir="instal~1|install-tools"/>
+    <ROW Directory="lib_Dir" Directory_Parent="APPDIR" DefaultDir="lib"/>
+    <ROW Directory="libcob_Dir" Directory_Parent="include_Dir" DefaultDir="libcob"/>
+    <ROW Directory="mingw32_Dir" Directory_Parent="gcc_Dir" DefaultDir="mingw32"/>
+    <ROW Directory="runtime_Dir" Directory_Parent="MinGWandGNU_Dir" DefaultDir="runtime"/>
+    <ROW Directory="samples_Dir" Directory_Parent="APPDIR" DefaultDir="samples"/>
+    <ROW Directory="sys_Dir" Directory_Parent="include_Dir" DefaultDir="sys"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="COBDUMP.dll" ComponentId="{7B2A198D-B416-43E4-B011-62CF3B7F3C7B}" Directory_="bin_Dir" Attributes="0" KeyPath="COBDUMP.dll"/>
+    <ROW Component="CONTRIBUTORS.txt" ComponentId="{DCE80EAF-97E7-453D-AFCD-7B561F6982E7}" Directory_="runtime_Dir" Attributes="0" KeyPath="CONTRIBUTORS.txt" Type="0"/>
+    <ROW Component="FileStatMsgs.cpy" ComponentId="{B05A8B85-F288-4B16-9B89-D33C847AD135}" Directory_="copy_Dir" Attributes="0" KeyPath="FileStatMsgs.cpy" Type="0"/>
+    <ROW Component="OCic.exe" ComponentId="{78159955-D0F8-4EA9-8CE0-FC36C67BA277}" Directory_="bin_Dir" Attributes="0" KeyPath="OCic.exe"/>
+    <ROW Component="OpenCOBOL1.106FEB2009BuildGuideForMinGW." ComponentId="{10B5BDE6-B507-4088-926D-A997275856CA}" Directory_="documentation_Dir" Attributes="0" KeyPath="OpenCOBOL1.106FEB2009BuildGuideForMinGW.pdf" Type="0"/>
+    <ROW Component="OpenCOBOL1.106FEB2009MinGWDistributionRE" ComponentId="{689021B7-B5F3-405B-92C1-576769F9632D}" Directory_="APPDIR" Attributes="0" KeyPath="OpenCOBOL1.106FEB2009MinGWDistributionREADME.pdf" Type="0"/>
+    <ROW Component="ProductInformation" ComponentId="{7D55FCEA-DD36-4162-B17D-0066B8AA3CDE}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="accctrl.h" ComponentId="{51D49AE6-A231-4659-9DBA-0420B64566CE}" Directory_="include_Dir" Attributes="0" KeyPath="accctrl.h" Type="0"/>
+    <ROW Component="addr2line.exe" ComponentId="{B0FEA7C8-039E-4B78-985E-59BDE9F03504}" Directory_="bin_Dir" Attributes="0" KeyPath="addr2line.exe"/>
+    <ROW Component="ar.exe" ComponentId="{2CF046B9-95E0-4A1E-AA23-94C84ADE31C0}" Directory_="bin_Dir" Attributes="0" KeyPath="ar.exe"/>
+    <ROW Component="as.exe" ComponentId="{B29FAFF0-FEC4-43EA-A0B9-D6530A87CEAD}" Directory_="bin_Dir" Attributes="0" KeyPath="as.exe"/>
+    <ROW Component="as.info.txt" ComponentId="{25AD2912-564B-4982-B897-6FADB50A8E10}" Directory_="MinGWandGNU_Dir" Attributes="0" KeyPath="as.info.txt" Type="0"/>
+    <ROW Component="atm.h" ComponentId="{F4BE75E0-4027-4B09-8C45-BEF27C1A08D8}" Directory_="ddk_Dir" Attributes="0" KeyPath="atm.h" Type="0"/>
+    <ROW Component="binmode.o" ComponentId="{40520B57-CF47-4D40-B97C-53D726765929}" Directory_="lib_Dir" Attributes="0" KeyPath="binmode.o" Type="0"/>
+    <ROW Component="bintest.cbl" ComponentId="{B33DF0A8-EDBD-45B0-B69B-32FA2EEB76B5}" Directory_="samples_Dir" Attributes="0" KeyPath="bintest.cbl" Type="0"/>
+    <ROW Component="bs2000.conf" ComponentId="{66D60971-9DB9-477B-B3B0-8D70AB856891}" Directory_="config_Dir" Attributes="0" KeyPath="bs2000.conf" Type="0"/>
+    <ROW Component="byteswap.h" ComponentId="{BE25670A-C6F0-4449-B7C0-6CF6D7AD2B5E}" Directory_="libcob_Dir" Attributes="0" KeyPath="byteswap.h" Type="0"/>
+    <ROW Component="cc1.exe" ComponentId="{DEC963A9-1559-47B7-87CA-3A6FFBFA2E9E}" Directory_="bin_Dir" Attributes="0" KeyPath="cc1.exe"/>
+    <ROW Component="cfilt.exe" ComponentId="{F2219FBE-09BC-4A96-9712-63909975FB29}" Directory_="bin_Dir" Attributes="0" KeyPath="cfilt.exe"/>
+    <ROW Component="cobc.exe" ComponentId="{9A2FCB01-D82E-4C0B-BDE5-D6FA136C1E97}" Directory_="bin_Dir" Attributes="0" KeyPath="cobc.exe"/>
+    <ROW Component="cobconfig" ComponentId="{9A105F84-DBE2-4D48-92FF-692645AE7FA5}" Directory_="bin_Dir" Attributes="0" KeyPath="cobconfig" Type="0"/>
+    <ROW Component="cobcrun.exe" ComponentId="{3F4BD656-40B5-4A88-A9FD-07BCB5273F89}" Directory_="bin_Dir" Attributes="0" KeyPath="cobcrun.exe"/>
+    <ROW Component="cpp.exe" ComponentId="{B4A70654-2E56-4E1A-864D-2ABC7B7A8428}" Directory_="bin_Dir" Attributes="0" KeyPath="cpp.exe"/>
+    <ROW Component="crtbegin.o" ComponentId="{A891E44C-41DE-4B15-AC82-C4A6D82B6C38}" Directory_="__Dir" Attributes="0" KeyPath="crtbegin.o" Type="0"/>
+    <ROW Component="db_archive.exe" ComponentId="{76118509-108F-438F-8F72-926D8835BDD5}" Directory_="bin_Dir" Attributes="0" KeyPath="db_archive.exe"/>
+    <ROW Component="db_checkpoint.exe" ComponentId="{93C1BCF0-0DD6-44A9-8854-239BE4B24B13}" Directory_="bin_Dir" Attributes="0" KeyPath="db_checkpoint.exe"/>
+    <ROW Component="db_deadlock.exe" ComponentId="{6878BB4F-D188-4122-8424-A27AB22B86A8}" Directory_="bin_Dir" Attributes="0" KeyPath="db_deadlock.exe"/>
+    <ROW Component="db_dump.exe" ComponentId="{1CF253A9-98EA-40F2-90CE-0F656D4BC823}" Directory_="bin_Dir" Attributes="0" KeyPath="db_dump.exe"/>
+    <ROW Component="db_hotbackup.exe" ComponentId="{FE4E19C6-5DDD-4C7D-8B06-6A8ABE88CB3B}" Directory_="bin_Dir" Attributes="0" KeyPath="db_hotbackup.exe"/>
+    <ROW Component="db_load.exe" ComponentId="{66E6C8B9-7776-491F-8391-F51C2EE3BDED}" Directory_="bin_Dir" Attributes="0" KeyPath="db_load.exe"/>
+    <ROW Component="db_log_verify.exe" ComponentId="{4158557B-19C6-4FC9-BEE9-ACB636649EFF}" Directory_="bin_Dir" Attributes="0" KeyPath="db_log_verify.exe"/>
+    <ROW Component="db_printlog.exe" ComponentId="{5A6E5EE1-247F-453B-900D-C87A1FC79D8E}" Directory_="bin_Dir" Attributes="0" KeyPath="db_printlog.exe"/>
+    <ROW Component="db_recover.exe" ComponentId="{76F8EDAC-909C-4C36-BC25-BA6A5F42D8F3}" Directory_="bin_Dir" Attributes="0" KeyPath="db_recover.exe"/>
+    <ROW Component="db_stat.exe" ComponentId="{F657142D-A4A4-4CC9-97D4-3025E868776D}" Directory_="bin_Dir" Attributes="0" KeyPath="db_stat.exe"/>
+    <ROW Component="db_upgrade.exe" ComponentId="{E3302700-76B5-48CF-80DC-F372EE55F235}" Directory_="bin_Dir" Attributes="0" KeyPath="db_upgrade.exe"/>
+    <ROW Component="db_verify.exe" ComponentId="{E1FD997C-E8A3-41CA-B802-63FF8869CD90}" Directory_="bin_Dir" Attributes="0" KeyPath="db_verify.exe"/>
+    <ROW Component="dlltool.exe" ComponentId="{C0A4C537-9511-4DB3-A896-69BC3252A0F1}" Directory_="bin_Dir" Attributes="0" KeyPath="dlltool.exe"/>
+    <ROW Component="dllwrap.exe" ComponentId="{A9949115-3181-4847-8D63-7ED695B397E1}" Directory_="bin_Dir" Attributes="0" KeyPath="dllwrap.exe"/>
+    <ROW Component="emmintrin.h" ComponentId="{A2810969-0585-4DB0-8446-2A9F2D544C1E}" Directory_="include_1_Dir" Attributes="0" KeyPath="emmintrin.h" Type="0"/>
+    <ROW Component="emmintrin.h_1" ComponentId="{FB42D498-1BB3-4DDA-8C8F-40C4F7E354A0}" Directory_="include_2_Dir" Attributes="0" KeyPath="emmintrin.h_1" Type="0"/>
+    <ROW Component="fcntl.h" ComponentId="{8D6FFC67-A27D-4E5E-8410-D68683915CF3}" Directory_="sys_Dir" Attributes="0" KeyPath="fcntl.h_1" Type="0"/>
+    <ROW Component="gcc.exe" ComponentId="{6E235A36-A2D5-491E-A262-C69B1463D7C9}" Directory_="bin_Dir" Attributes="0" KeyPath="gcc.exe"/>
+    <ROW Component="gcov.exe" ComponentId="{D6DAEA13-15C2-4F87-9B71-42E60C8B5A17}" Directory_="bin_Dir" Attributes="0" KeyPath="gcov.exe"/>
+    <ROW Component="gl.h" ComponentId="{6CA84A69-CC86-4403-AC64-2CB95E5A5924}" Directory_="GL_Dir" Attributes="0" KeyPath="gl.h" Type="0"/>
+    <ROW Component="gmp.info1.txt" ComponentId="{23E0B706-700C-4928-A000-77D9B8058E5C}" Directory_="GMP_Dir" Attributes="0" KeyPath="gmp.info1.txt" Type="0"/>
+    <ROW Component="gprof.exe" ComponentId="{52EC908E-C4AD-4901-9F8A-884828C3C8CC}" Directory_="bin_Dir" Attributes="0" KeyPath="gprof.exe"/>
+    <ROW Component="gsyslimits.h" ComponentId="{71086DBF-D5FC-42F7-B425-F6BE00F7E5F5}" Directory_="installtools_Dir" Attributes="0" KeyPath="gsyslimits.h" Type="0"/>
+    <ROW Component="ld.exe" ComponentId="{817AAA98-11FC-4704-9E31-5396E1E05A27}" Directory_="bin_Dir" Attributes="0" KeyPath="ld.exe"/>
+    <ROW Component="libcob1.dll" ComponentId="{53CB7AED-28B4-471F-A925-04743E759DFA}" Directory_="bin_Dir" Attributes="0" KeyPath="libcob1.dll"/>
+    <ROW Component="libdb5.0.dll" ComponentId="{9597EC34-4899-491A-84A4-EAB993A93276}" Directory_="bin_Dir" Attributes="0" KeyPath="libdb5.0.dll"/>
+    <ROW Component="libgmp10.dll" ComponentId="{FAF25966-CD3B-408A-938A-A532D50972ED}" Directory_="bin_Dir" Attributes="0" KeyPath="libgmp10.dll"/>
+    <ROW Component="license_db.html" ComponentId="{CD74155A-A6E6-4729-AFF1-E9F7C510B6D2}" Directory_="BerkeleyDB_Dir" Attributes="0" KeyPath="license_db.html" Type="0"/>
+    <ROW Component="mingw32gcc.exe" ComponentId="{EE13E8B9-7493-4B60-A0C0-5BF47F806602}" Directory_="bin_Dir" Attributes="0" KeyPath="mingw32gcc.exe"/>
+    <ROW Component="mingwm10.dll" ComponentId="{C5050BE2-0D44-4630-80E6-E1B200518D6E}" Directory_="bin_Dir" Attributes="0" KeyPath="mingwm10.dll"/>
+    <ROW Component="nm.exe" ComponentId="{593B2D5E-1DEE-47FB-A2C7-B059B16379A2}" Directory_="bin_Dir" Attributes="0" KeyPath="nm.exe"/>
+    <ROW Component="objcopy.exe" ComponentId="{EE6DA385-5151-4756-9205-1E77F8D3C489}" Directory_="bin_Dir" Attributes="0" KeyPath="objcopy.exe"/>
+    <ROW Component="objdump.exe" ComponentId="{A02A7AA4-E9E9-42C3-9ADC-9D846518C418}" Directory_="bin_Dir" Attributes="0" KeyPath="objdump.exe"/>
+    <ROW Component="opencobol.info.txt" ComponentId="{51107749-FC96-434F-AAB8-E8290D2F36AC}" Directory_="OpenCOBOL1.1_Dir" Attributes="0" KeyPath="opencobol.info.txt" Type="0"/>
+    <ROW Component="pdcurses.dll" ComponentId="{B3AD5E19-13E3-4361-98A1-96F43E28B077}" Directory_="bin_Dir" Attributes="0" KeyPath="pdcurses.dll"/>
+    <ROW Component="ranlib.exe" ComponentId="{F1BB90AA-AAE1-4A2F-912A-68355F3DE1CA}" Directory_="bin_Dir" Attributes="0" KeyPath="ranlib.exe"/>
+    <ROW Component="readelf.exe" ComponentId="{A7B4D905-45A5-4EA2-8C26-99CBD8F27B02}" Directory_="bin_Dir" Attributes="0" KeyPath="readelf.exe"/>
+    <ROW Component="size.exe" ComponentId="{9CD58822-747C-475B-BEBB-71BE98771285}" Directory_="bin_Dir" Attributes="0" KeyPath="size.exe"/>
+    <ROW Component="strings.exe" ComponentId="{5C69E86A-F02B-4B85-BF2C-259097152B46}" Directory_="bin_Dir" Attributes="0" KeyPath="strings.exe"/>
+    <ROW Component="strip.exe" ComponentId="{4AC92907-6501-4029-B415-8D9D5595BEA4}" Directory_="bin_Dir" Attributes="0" KeyPath="strip.exe"/>
+    <ROW Component="windmc.exe" ComponentId="{A305EA02-93FE-4472-8EE3-01CF87A52242}" Directory_="bin_Dir" Attributes="0" KeyPath="windmc.exe"/>
+    <ROW Component="windres.exe" ComponentId="{D6594220-48C8-43C5-A2C1-06F2FBF44AC3}" Directory_="bin_Dir" Attributes="0" KeyPath="windres.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="COBDUMP.dll CONTRIBUTORS.txt FileStatMsgs.cpy OCic.exe OpenCOBOL1.106FEB2009BuildGuideForMinGW. OpenCOBOL1.106FEB2009MinGWDistributionRE ProductInformation accctrl.h addr2line.exe ar.exe as.exe as.info.txt atm.h binmode.o bintest.cbl bs2000.conf byteswap.h cc1.exe cfilt.exe cobc.exe cobconfig cobcrun.exe cpp.exe crtbegin.o db_archive.exe db_checkpoint.exe db_deadlock.exe db_dump.exe db_hotbackup.exe db_load.exe db_log_verify.exe db_printlog.exe db_recover.exe db_stat.exe db_upgrade.exe db_verify.exe dlltool.exe dllwrap.exe emmintrin.h emmintrin.h_1 fcntl.h gcc.exe gcov.exe gl.h gmp.info1.txt gprof.exe gsyslimits.h ld.exe libcob1.dll libdb5.0.dll libgmp10.dll license_db.html mingw32gcc.exe mingwm10.dll nm.exe objcopy.exe objdump.exe opencobol.info.txt pdcurses.dll ranlib.exe readelf.exe size.exe strings.exe strip.exe windmc.exe windres.exe"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="COBDUMP.cbl" Component_="bintest.cbl" FileName="COBDUMP.cbl" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\COBDUMP.cbl" SelfReg="false" NextFile="COBDUMP.lst"/>
+    <ROW File="COBDUMP.dll" Component_="COBDUMP.dll" FileName="COBDUMP.dll" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\COBDUMP.dll" SelfReg="false" NextFile="cpp.exe"/>
+    <ROW File="COBDUMP.lst" Component_="bintest.cbl" FileName="COBDUMP.lst" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\COBDUMP.lst" SelfReg="false" NextFile="COBDUMPTest.cbl"/>
+    <ROW File="COBDUMPTest.cbl" Component_="bintest.cbl" FileName="COBDUM~1.cbl|COBDUMPTest.cbl" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\COBDUMPTest.cbl" SelfReg="false" NextFile="colors.cbl"/>
+    <ROW File="CONTRIBUTORS.txt" Component_="CONTRIBUTORS.txt" FileName="CONTRI~1.txt|CONTRIBUTORS.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\runtime\CONTRIBUTORS.txt" SelfReg="false" NextFile="DISCLAIMER.txt"/>
+    <ROW File="CRT_fp10.o" Component_="binmode.o" FileName="CRT_fp10.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\CRT_fp10.o" SelfReg="false" NextFile="CRT_fp8.o"/>
+    <ROW File="CRT_fp8.o" Component_="binmode.o" FileName="CRT_fp8.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\CRT_fp8.o" SelfReg="false" NextFile="CRT_noglob.o"/>
+    <ROW File="CRT_noglob.o" Component_="binmode.o" FileName="CRT_no~1.o|CRT_noglob.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\CRT_noglob.o" SelfReg="false" NextFile="dllcrt1.o"/>
+    <ROW File="DISCLAIMER.txt" Component_="CONTRIBUTORS.txt" FileName="DISCLA~1.txt|DISCLAIMER.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\runtime\DISCLAIMER.txt" SelfReg="false" NextFile="README.txt"/>
+    <ROW File="FileStatMsgs.cpy" Component_="FileStatMsgs.cpy" FileName="FileSt~1.cpy|FileStat-Msgs.cpy" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\copy\FileStat-Msgs.cpy" SelfReg="false" NextFile="screenio.cpy"/>
+    <ROW File="GPL.txt" Component_="OpenCOBOL1.106FEB2009MinGWDistributionRE" FileName="GPL.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\GPL.txt" SelfReg="false" NextFile="LGPL.txt"/>
+    <ROW File="LGPL.txt" Component_="OpenCOBOL1.106FEB2009MinGWDistributionRE" FileName="LGPL.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\LGPL.txt" SelfReg="false" NextFile="addr2line.exe"/>
+    <ROW File="OCic.cbl" Component_="bintest.cbl" FileName="OCic.cbl" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\OCic.cbl" SelfReg="false" NextFile="OCic.lst"/>
+    <ROW File="OCic.exe" Component_="OCic.exe" FileName="OCic.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\OCic.exe" SelfReg="false" NextFile="pdcurses.dll"/>
+    <ROW File="OCic.lst" Component_="bintest.cbl" FileName="OCic.lst" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\OCic.lst" SelfReg="false" NextFile="STREAMIO.cbl"/>
+    <ROW File="OpenCOBOL1.106FEB2009BuildGuideForMinGW.pdf" Component_="OpenCOBOL1.106FEB2009BuildGuideForMinGW." FileName="OpenCO~1.pdf|OpenCOBOL-1.1-06FEB2009-Build-Guide-For-MinGW.pdf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\OpenCOBOL-1.1-06FEB2009-Build-Guide-For-MinGW.pdf" SelfReg="false" NextFile="OpenCOBOL1.106FEB2009OCic.pdf"/>
+    <ROW File="OpenCOBOL1.106FEB2009MinGWDistributionREADME.pdf" Component_="OpenCOBOL1.106FEB2009MinGWDistributionRE" FileName="OpenCO~1.pdf|OpenCOBOL-1.1-06FEB2009-MinGW-Distribution-README.pdf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\OpenCOBOL-1.1-06FEB2009-MinGW-Distribution-README.pdf" SelfReg="false" NextFile="GPL.txt"/>
+    <ROW File="OpenCOBOL1.106FEB2009OCic.pdf" Component_="OpenCOBOL1.106FEB2009BuildGuideForMinGW." FileName="OpenCO~2.pdf|OpenCOBOL-1.1-06FEB2009-OCic.pdf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\OpenCOBOL-1.1-06FEB2009-OCic.pdf" SelfReg="false" NextFile="OpenCOBOL1.106FEB2009ProgrammersGuide.pdf"/>
+    <ROW File="OpenCOBOL1.106FEB2009ProgrammersGuide.pdf" Component_="OpenCOBOL1.106FEB2009BuildGuideForMinGW." FileName="OpenCO~3.pdf|OpenCOBOL-1.1-06FEB2009-Programmers-Guide.pdf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\OpenCOBOL-1.1-06FEB2009-Programmers-Guide.pdf" SelfReg="false" NextFile="OpenCOBOL1.106FEB2009TextpadIntegration.pdf"/>
+    <ROW File="OpenCOBOL1.106FEB2009TextpadIntegration.pdf" Component_="OpenCOBOL1.106FEB2009BuildGuideForMinGW." FileName="OpenCO~4.pdf|OpenCOBOL-1.1-06FEB2009-Textpad-Integration.pdf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\OpenCOBOL-1.1-06FEB2009-Textpad-Integration.pdf" SelfReg="false" NextFile="accctrl.h"/>
+    <ROW File="README" Component_="emmintrin.h" FileName="README" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\README" SelfReg="false" NextFile="stdarg.h"/>
+    <ROW File="README.txt" Component_="CONTRIBUTORS.txt" FileName="README.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\runtime\README.txt" SelfReg="false" NextFile="standards.info.txt"/>
+    <ROW File="README_1" Component_="emmintrin.h_1" FileName="README" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\README" SelfReg="false" NextFile="stdarg.h_1"/>
+    <ROW File="STREAMIO.cbl" Component_="bintest.cbl" FileName="STREAMIO.cbl" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\STREAMIO.cbl" SelfReg="false" NextFile="WINSYSTEM.cbl"/>
+    <ROW File="STREAMIOError.cpy" Component_="FileStatMsgs.cpy" FileName="STREAM~2.cpy|STREAMIOError.cpy" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\copy\STREAMIOError.cpy" SelfReg="false" NextFile="license_db.html"/>
+    <ROW File="STREAMIOcb.cpy" Component_="FileStatMsgs.cpy" FileName="STREAM~1.cpy|STREAMIOcb.cpy" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\copy\STREAMIOcb.cpy" SelfReg="false" NextFile="STREAMIOError.cpy"/>
+    <ROW File="WINSYSTEM.cbl" Component_="bintest.cbl" FileName="WINSYS~1.cbl|WINSYSTEM.cbl" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\WINSYSTEM.cbl" SelfReg="false"/>
+    <ROW File="_mingw.h" Component_="accctrl.h" FileName="_mingw.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\_mingw.h" SelfReg="false" NextFile="binmode.o"/>
+    <ROW File="accctrl.h" Component_="accctrl.h" FileName="accctrl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\accctrl.h" SelfReg="false" NextFile="aclapi.h"/>
+    <ROW File="aclapi.h" Component_="accctrl.h" FileName="aclapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\aclapi.h" SelfReg="false" NextFile="aclui.h"/>
+    <ROW File="aclui.h" Component_="accctrl.h" FileName="aclui.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\aclui.h" SelfReg="false" NextFile="adsprop.h"/>
+    <ROW File="addr2line.exe" Component_="addr2line.exe" FileName="addr2l~1.exe|addr2line.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\addr2line.exe" SelfReg="false" NextFile="ar.exe"/>
+    <ROW File="adsprop.h" Component_="accctrl.h" FileName="adsprop.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\adsprop.h" SelfReg="false" NextFile="afxres.h"/>
+    <ROW File="afxres.h" Component_="accctrl.h" FileName="afxres.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\afxres.h" SelfReg="false" NextFile="amaudio.h"/>
+    <ROW File="amaudio.h" Component_="accctrl.h" FileName="amaudio.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\amaudio.h" SelfReg="false" NextFile="amvideo.h"/>
+    <ROW File="amvideo.h" Component_="accctrl.h" FileName="amvideo.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\amvideo.h" SelfReg="false" NextFile="ansidecl.h"/>
+    <ROW File="ansidecl.h" Component_="accctrl.h" FileName="ansidecl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ansidecl.h" SelfReg="false" NextFile="assert.h"/>
+    <ROW File="ar.exe" Component_="ar.exe" FileName="ar.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\ar.exe" SelfReg="false" NextFile="as.exe"/>
+    <ROW File="as.exe" Component_="as.exe" FileName="as.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\as.exe" SelfReg="false" NextFile="cfilt.exe"/>
+    <ROW File="as.info.txt" Component_="as.info.txt" FileName="asinfo~1.txt|as.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\as.info.txt" SelfReg="false" NextFile="bfd.info.txt"/>
+    <ROW File="assert.h" Component_="accctrl.h" FileName="assert.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\assert.h" SelfReg="false" NextFile="audevcod.h"/>
+    <ROW File="atm.h" Component_="atm.h" FileName="atm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\atm.h" SelfReg="false" NextFile="batclass.h"/>
+    <ROW File="audevcod.h" Component_="accctrl.h" FileName="audevcod.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\audevcod.h" SelfReg="false" NextFile="aviriff.h"/>
+    <ROW File="aviriff.h" Component_="accctrl.h" FileName="aviriff.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\aviriff.h" SelfReg="false" NextFile="aygshell.h"/>
+    <ROW File="aygshell.h" Component_="accctrl.h" FileName="aygshell.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\aygshell.h" SelfReg="false" NextFile="basetsd.h"/>
+    <ROW File="basetsd.h" Component_="accctrl.h" FileName="basetsd.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\basetsd.h" SelfReg="false" NextFile="basetyps.h"/>
+    <ROW File="basetyps.h" Component_="accctrl.h" FileName="basetyps.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\basetyps.h" SelfReg="false" NextFile="bdatypes.h"/>
+    <ROW File="batclass.h" Component_="atm.h" FileName="batclass.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\batclass.h" SelfReg="false" NextFile="cfg.h"/>
+    <ROW File="bdatypes.h" Component_="accctrl.h" FileName="bdatypes.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\bdatypes.h" SelfReg="false" NextFile="bfd.h"/>
+    <ROW File="bfd.h" Component_="accctrl.h" FileName="bfd.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\bfd.h" SelfReg="false" NextFile="bfdlink.h"/>
+    <ROW File="bfd.info.txt" Component_="as.info.txt" FileName="bfdinf~1.txt|bfd.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\bfd.info.txt" SelfReg="false" NextFile="binutils.info.txt"/>
+    <ROW File="bfdlink.h" Component_="accctrl.h" FileName="bfdlink.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\bfdlink.h" SelfReg="false" NextFile="cderr.h"/>
+    <ROW File="binmode.o" Component_="binmode.o" FileName="binmode.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\binmode.o" SelfReg="false" NextFile="crt1.o"/>
+    <ROW File="bintest.cbl" Component_="bintest.cbl" FileName="bintest.cbl" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\bintest.cbl" SelfReg="false" NextFile="COBDUMP.cbl"/>
+    <ROW File="binutils.info.txt" Component_="as.info.txt" FileName="binuti~1.txt|binutils.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\binutils.info.txt" SelfReg="false" NextFile="configure.info.txt"/>
+    <ROW File="bs2000.conf" Component_="bs2000.conf" FileName="bs2000~1.con|bs2000.conf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\config\bs2000.conf" SelfReg="false" NextFile="cobol2002.conf"/>
+    <ROW File="byteswap.h" Component_="byteswap.h" FileName="byteswap.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\byteswap.h" SelfReg="false" NextFile="call.h"/>
+    <ROW File="call.h" Component_="byteswap.h" FileName="call.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\call.h" SelfReg="false" NextFile="codegen.h"/>
+    <ROW File="cc1.exe" Component_="cc1.exe" FileName="cc1.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\cc1.exe" SelfReg="false" NextFile="cobconfig"/>
+    <ROW File="cderr.h" Component_="accctrl.h" FileName="cderr.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\cderr.h" SelfReg="false" NextFile="cguid.h"/>
+    <ROW File="cfg.h" Component_="atm.h" FileName="cfg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\cfg.h" SelfReg="false" NextFile="cfgmgr32.h"/>
+    <ROW File="cfgmgr32.h" Component_="atm.h" FileName="cfgmgr32.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\cfgmgr32.h" SelfReg="false" NextFile="d4drvif.h"/>
+    <ROW File="cfilt.exe" Component_="cfilt.exe" FileName="c__fil~1.exe|c++filt.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\c++filt.exe" SelfReg="false" NextFile="cc1.exe"/>
+    <ROW File="cguid.h" Component_="accctrl.h" FileName="cguid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\cguid.h" SelfReg="false" NextFile="cmnquery.h"/>
+    <ROW File="cmnquery.h" Component_="accctrl.h" FileName="cmnquery.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\cmnquery.h" SelfReg="false" NextFile="comcat.h"/>
+    <ROW File="cobc.exe" Component_="cobc.exe" FileName="cobc.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\cobc.exe" SelfReg="false" NextFile="cobcrun.exe"/>
+    <ROW File="cobconfig" Component_="cobconfig" FileName="cob-co~1|cob-config" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\cob-config" SelfReg="false" NextFile="cobc.exe"/>
+    <ROW File="cobcrun.exe" Component_="cobcrun.exe" FileName="cobcrun.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\cobcrun.exe" SelfReg="false" NextFile="COBDUMP.dll"/>
+    <ROW File="cobol2002.conf" Component_="bs2000.conf" FileName="cobol2~1.con|cobol2002.conf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\config\cobol2002.conf" SelfReg="false" NextFile="cobol85.conf"/>
+    <ROW File="cobol85.conf" Component_="bs2000.conf" FileName="cobol8~1.con|cobol85.conf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\config\cobol85.conf" SelfReg="false" NextFile="default.conf"/>
+    <ROW File="codegen.h" Component_="byteswap.h" FileName="codegen.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\codegen.h" SelfReg="false" NextFile="common.h"/>
+    <ROW File="colors.cbl" Component_="bintest.cbl" FileName="colors.cbl" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\colors.cbl" SelfReg="false" NextFile="mathtest.cbl"/>
+    <ROW File="comcat.h" Component_="accctrl.h" FileName="comcat.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\comcat.h" SelfReg="false" NextFile="commctrl.h"/>
+    <ROW File="commctrl.h" Component_="accctrl.h" FileName="commctrl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\commctrl.h" SelfReg="false" NextFile="commdlg.h"/>
+    <ROW File="commdlg.h" Component_="accctrl.h" FileName="commdlg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\commdlg.h" SelfReg="false" NextFile="complex.h"/>
+    <ROW File="common.h" Component_="byteswap.h" FileName="common.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\common.h" SelfReg="false" NextFile="exception.def"/>
+    <ROW File="complex.h" Component_="accctrl.h" FileName="complex.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\complex.h" SelfReg="false" NextFile="conio.h"/>
+    <ROW File="configure.info.txt" Component_="as.info.txt" FileName="config~1.txt|configure.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\configure.info.txt" SelfReg="false" NextFile="cpp.info.txt"/>
+    <ROW File="conio.h" Component_="accctrl.h" FileName="conio.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\conio.h" SelfReg="false" NextFile="control.h"/>
+    <ROW File="control.h" Component_="accctrl.h" FileName="control.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\control.h" SelfReg="false" NextFile="cpl.h"/>
+    <ROW File="cpl.h" Component_="accctrl.h" FileName="cpl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\cpl.h" SelfReg="false" NextFile="cplext.h"/>
+    <ROW File="cplext.h" Component_="accctrl.h" FileName="cplext.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\cplext.h" SelfReg="false" NextFile="ctype.h"/>
+    <ROW File="cpp.exe" Component_="cpp.exe" FileName="cpp.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\cpp.exe" SelfReg="false" NextFile="db_archive.exe"/>
+    <ROW File="cpp.info.txt" Component_="as.info.txt" FileName="cppinf~1.txt|cpp.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\cpp.info.txt" SelfReg="false" NextFile="cppinternals.info.txt"/>
+    <ROW File="cppinternals.info.txt" Component_="as.info.txt" FileName="cppint~1.txt|cppinternals.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\cppinternals.info.txt" SelfReg="false" NextFile="gcc.info.txt"/>
+    <ROW File="crt1.o" Component_="binmode.o" FileName="crt1.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\crt1.o" SelfReg="false" NextFile="crt2.o"/>
+    <ROW File="crt2.o" Component_="binmode.o" FileName="crt2.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\crt2.o" SelfReg="false" NextFile="crtmt.o"/>
+    <ROW File="crtbegin.o" Component_="crtbegin.o" FileName="crtbegin.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\crtbegin.o" SelfReg="false" NextFile="crtend.o"/>
+    <ROW File="crtend.o" Component_="crtbegin.o" FileName="crtend.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\crtend.o" SelfReg="false" NextFile="emmintrin.h"/>
+    <ROW File="crtmt.o" Component_="binmode.o" FileName="crtmt.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\crtmt.o" SelfReg="false" NextFile="crtst.o"/>
+    <ROW File="crtst.o" Component_="binmode.o" FileName="crtst.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\crtst.o" SelfReg="false" NextFile="CRT_fp10.o"/>
+    <ROW File="ctype.h" Component_="accctrl.h" FileName="ctype.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ctype.h" SelfReg="false" NextFile="curses.h"/>
+    <ROW File="curses.h" Component_="accctrl.h" FileName="curses.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\curses.h" SelfReg="false" NextFile="curspriv.h"/>
+    <ROW File="curspriv.h" Component_="accctrl.h" FileName="curspriv.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\curspriv.h" SelfReg="false" NextFile="custcntl.h"/>
+    <ROW File="custcntl.h" Component_="accctrl.h" FileName="custcntl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\custcntl.h" SelfReg="false" NextFile="d3d9.h"/>
+    <ROW File="d3d9.h" Component_="accctrl.h" FileName="d3d9.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\d3d9.h" SelfReg="false" NextFile="d3d9caps.h"/>
+    <ROW File="d3d9caps.h" Component_="accctrl.h" FileName="d3d9caps.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\d3d9caps.h" SelfReg="false" NextFile="d3d9types.h"/>
+    <ROW File="d3d9types.h" Component_="accctrl.h" FileName="d3d9ty~1.h|d3d9types.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\d3d9types.h" SelfReg="false" NextFile="db.h"/>
+    <ROW File="d4drvif.h" Component_="atm.h" FileName="d4drvif.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\d4drvif.h" SelfReg="false" NextFile="d4iface.h"/>
+    <ROW File="d4iface.h" Component_="atm.h" FileName="d4iface.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\d4iface.h" SelfReg="false" NextFile="ddkmapi.h"/>
+    <ROW File="db.h" Component_="accctrl.h" FileName="db.h" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\db.h" SelfReg="false" NextFile="dbt.h"/>
+    <ROW File="db_185.h" Component_="accctrl.h" FileName="db_185.h" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\db_185.h" SelfReg="false" NextFile="db_cxx.h"/>
+    <ROW File="db_archive.exe" Component_="db_archive.exe" FileName="db_arc~1.exe|db_archive.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_archive.exe" SelfReg="false" NextFile="db_checkpoint.exe"/>
+    <ROW File="db_checkpoint.exe" Component_="db_checkpoint.exe" FileName="db_che~1.exe|db_checkpoint.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_checkpoint.exe" SelfReg="false" NextFile="db_deadlock.exe"/>
+    <ROW File="db_cxx.h" Component_="accctrl.h" FileName="db_cxx.h" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\db_cxx.h" SelfReg="false" NextFile="dde.h"/>
+    <ROW File="db_deadlock.exe" Component_="db_deadlock.exe" FileName="db_dea~1.exe|db_deadlock.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_deadlock.exe" SelfReg="false" NextFile="db_dump.exe"/>
+    <ROW File="db_dump.exe" Component_="db_dump.exe" FileName="db_dump.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_dump.exe" SelfReg="false" NextFile="db_hotbackup.exe"/>
+    <ROW File="db_hotbackup.exe" Component_="db_hotbackup.exe" FileName="db_hot~1.exe|db_hotbackup.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_hotbackup.exe" SelfReg="false" NextFile="db_load.exe"/>
+    <ROW File="db_load.exe" Component_="db_load.exe" FileName="db_load.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_load.exe" SelfReg="false" NextFile="db_log_verify.exe"/>
+    <ROW File="db_log_verify.exe" Component_="db_log_verify.exe" FileName="db_log~1.exe|db_log_verify.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_log_verify.exe" SelfReg="false" NextFile="db_printlog.exe"/>
+    <ROW File="db_printlog.exe" Component_="db_printlog.exe" FileName="db_pri~1.exe|db_printlog.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_printlog.exe" SelfReg="false" NextFile="db_recover.exe"/>
+    <ROW File="db_recover.exe" Component_="db_recover.exe" FileName="db_rec~1.exe|db_recover.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_recover.exe" SelfReg="false" NextFile="db_stat.exe"/>
+    <ROW File="db_stat.exe" Component_="db_stat.exe" FileName="db_stat.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_stat.exe" SelfReg="false" NextFile="db_upgrade.exe"/>
+    <ROW File="db_upgrade.exe" Component_="db_upgrade.exe" FileName="db_upg~1.exe|db_upgrade.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_upgrade.exe" SelfReg="false" NextFile="db_verify.exe"/>
+    <ROW File="db_verify.exe" Component_="db_verify.exe" FileName="db_ver~1.exe|db_verify.exe" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\db_verify.exe" SelfReg="false" NextFile="dlltool.exe"/>
+    <ROW File="dbt.h" Component_="accctrl.h" FileName="dbt.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dbt.h" SelfReg="false" NextFile="db_185.h"/>
+    <ROW File="dde.h" Component_="accctrl.h" FileName="dde.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dde.h" SelfReg="false" NextFile="ddeml.h"/>
+    <ROW File="ddeml.h" Component_="accctrl.h" FileName="ddeml.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddeml.h" SelfReg="false" NextFile="atm.h"/>
+    <ROW File="ddkmapi.h" Component_="atm.h" FileName="ddkmapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ddkmapi.h" SelfReg="false" NextFile="hidclass.h"/>
+    <ROW File="default.conf" Component_="bs2000.conf" FileName="defaul~1.con|default.conf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\config\default.conf" SelfReg="false" NextFile="ibm.conf"/>
+    <ROW File="devguid.h" Component_="accctrl.h" FileName="devguid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\devguid.h" SelfReg="false" NextFile="dhcpcsdk.h"/>
+    <ROW File="dhcpcsdk.h" Component_="accctrl.h" FileName="dhcpcsdk.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dhcpcsdk.h" SelfReg="false" NextFile="dir.h"/>
+    <ROW File="dir.h" Component_="accctrl.h" FileName="dir.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dir.h" SelfReg="false" NextFile="direct.h"/>
+    <ROW File="direct.h" Component_="accctrl.h" FileName="direct.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\direct.h" SelfReg="false" NextFile="dirent.h"/>
+    <ROW File="dirent.h" Component_="accctrl.h" FileName="dirent.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dirent.h" SelfReg="false" NextFile="disasm.h"/>
+    <ROW File="disasm.h" Component_="accctrl.h" FileName="dis-asm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dis-asm.h" SelfReg="false" NextFile="dlgs.h"/>
+    <ROW File="dlgs.h" Component_="accctrl.h" FileName="dlgs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dlgs.h" SelfReg="false" NextFile="docobj.h"/>
+    <ROW File="dllcrt1.o" Component_="binmode.o" FileName="dllcrt1.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\dllcrt1.o" SelfReg="false" NextFile="dllcrt2.o"/>
+    <ROW File="dllcrt2.o" Component_="binmode.o" FileName="dllcrt2.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\dllcrt2.o" SelfReg="false" NextFile="crtbegin.o"/>
+    <ROW File="dlltool.exe" Component_="dlltool.exe" FileName="dlltool.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\dlltool.exe" SelfReg="false" NextFile="dllwrap.exe"/>
+    <ROW File="dllwrap.exe" Component_="dllwrap.exe" FileName="dllwrap.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\dllwrap.exe" SelfReg="false" NextFile="gcc.exe"/>
+    <ROW File="docobj.h" Component_="accctrl.h" FileName="docobj.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\docobj.h" SelfReg="false" NextFile="dos.h"/>
+    <ROW File="dos.h" Component_="accctrl.h" FileName="dos.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dos.h" SelfReg="false" NextFile="dsadmin.h"/>
+    <ROW File="dsadmin.h" Component_="accctrl.h" FileName="dsadmin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dsadmin.h" SelfReg="false" NextFile="dsclient.h"/>
+    <ROW File="dsclient.h" Component_="accctrl.h" FileName="dsclient.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dsclient.h" SelfReg="false" NextFile="dsgetdc.h"/>
+    <ROW File="dsgetdc.h" Component_="accctrl.h" FileName="dsgetdc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dsgetdc.h" SelfReg="false" NextFile="dshow.h"/>
+    <ROW File="dshow.h" Component_="accctrl.h" FileName="dshow.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dshow.h" SelfReg="false" NextFile="dsquery.h"/>
+    <ROW File="dsquery.h" Component_="accctrl.h" FileName="dsquery.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dsquery.h" SelfReg="false" NextFile="dsrole.h"/>
+    <ROW File="dsrole.h" Component_="accctrl.h" FileName="dsrole.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dsrole.h" SelfReg="false" NextFile="dvdevcod.h"/>
+    <ROW File="dvdevcod.h" Component_="accctrl.h" FileName="dvdevcod.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dvdevcod.h" SelfReg="false" NextFile="dvdmedia.h"/>
+    <ROW File="dvdmedia.h" Component_="accctrl.h" FileName="dvdmedia.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dvdmedia.h" SelfReg="false" NextFile="dxerr8.h"/>
+    <ROW File="dxerr8.h" Component_="accctrl.h" FileName="dxerr8.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dxerr8.h" SelfReg="false" NextFile="dxerr9.h"/>
+    <ROW File="dxerr9.h" Component_="accctrl.h" FileName="dxerr9.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\dxerr9.h" SelfReg="false" NextFile="edevdefs.h"/>
+    <ROW File="edevdefs.h" Component_="accctrl.h" FileName="edevdefs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\edevdefs.h" SelfReg="false" NextFile="errno.h"/>
+    <ROW File="emmintrin.h" Component_="emmintrin.h" FileName="emmint~1.h|emmintrin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\emmintrin.h" SelfReg="false" NextFile="float.h_1"/>
+    <ROW File="emmintrin.h_1" Component_="emmintrin.h_1" FileName="emmint~1.h|emmintrin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\emmintrin.h" SelfReg="false" NextFile="float.h_2"/>
+    <ROW File="errno.h" Component_="accctrl.h" FileName="errno.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\errno.h" SelfReg="false" NextFile="errorrep.h"/>
+    <ROW File="errorrep.h" Component_="accctrl.h" FileName="errorrep.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\errorrep.h" SelfReg="false" NextFile="errors.h"/>
+    <ROW File="errors.h" Component_="accctrl.h" FileName="errors.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\errors.h" SelfReg="false" NextFile="evcode.h"/>
+    <ROW File="evcode.h" Component_="accctrl.h" FileName="evcode.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\evcode.h" SelfReg="false" NextFile="excpt.h"/>
+    <ROW File="exception.def" Component_="byteswap.h" FileName="except~1.def|exception.def" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\exception.def" SelfReg="false" NextFile="fileio.h"/>
+    <ROW File="excpt.h" Component_="accctrl.h" FileName="excpt.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\excpt.h" SelfReg="false" NextFile="exdisp.h"/>
+    <ROW File="exdisp.h" Component_="accctrl.h" FileName="exdisp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\exdisp.h" SelfReg="false" NextFile="exdispid.h"/>
+    <ROW File="exdispid.h" Component_="accctrl.h" FileName="exdispid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\exdispid.h" SelfReg="false" NextFile="fcntl.h"/>
+    <ROW File="fcntl.h" Component_="accctrl.h" FileName="fcntl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\fcntl.h" SelfReg="false" NextFile="fenv.h"/>
+    <ROW File="fcntl.h_1" Component_="fcntl.h" FileName="fcntl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\fcntl.h" SelfReg="false" NextFile="file.h"/>
+    <ROW File="fenv.h" Component_="accctrl.h" FileName="fenv.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\fenv.h" SelfReg="false" NextFile="float.h"/>
+    <ROW File="file.h" Component_="fcntl.h" FileName="file.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\file.h" SelfReg="false" NextFile="locking.h"/>
+    <ROW File="fileio.h" Component_="byteswap.h" FileName="fileio.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\fileio.h" SelfReg="false" NextFile="intrinsic.h"/>
+    <ROW File="float.h" Component_="accctrl.h" FileName="float.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\float.h" SelfReg="false" NextFile="fltdefs.h"/>
+    <ROW File="float.h_1" Component_="emmintrin.h" FileName="float.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\float.h" SelfReg="false" NextFile="iso646.h"/>
+    <ROW File="float.h_2" Component_="emmintrin.h_1" FileName="float.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\float.h" SelfReg="false" NextFile="iso646.h_1"/>
+    <ROW File="fltdefs.h" Component_="accctrl.h" FileName="fltdefs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\fltdefs.h" SelfReg="false" NextFile="getopt.h"/>
+    <ROW File="gcc.exe" Component_="gcc.exe" FileName="gcc.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\gcc.exe" SelfReg="false" NextFile="gccbug"/>
+    <ROW File="gcc.info.txt" Component_="as.info.txt" FileName="gccinf~1.txt|gcc.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\gcc.info.txt" SelfReg="false" NextFile="gccinstall.info.txt"/>
+    <ROW File="gccbug" Component_="cobconfig" FileName="gccbug" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\gccbug" SelfReg="false" NextFile="gcov.exe"/>
+    <ROW File="gccinstall.info.txt" Component_="as.info.txt" FileName="gccins~1.txt|gccinstall.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\gccinstall.info.txt" SelfReg="false" NextFile="gccint.info.txt"/>
+    <ROW File="gccint.info.txt" Component_="as.info.txt" FileName="gccint~1.txt|gccint.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\gccint.info.txt" SelfReg="false" NextFile="gprof.info.txt"/>
+    <ROW File="gcov.exe" Component_="gcov.exe" FileName="gcov.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\gcov.exe" SelfReg="false" NextFile="gprof.exe"/>
+    <ROW File="gcrt1.o" Component_="binmode.o" FileName="gcrt1.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcrt1.o" SelfReg="false" NextFile="gcrt2.o"/>
+    <ROW File="gcrt2.o" Component_="binmode.o" FileName="gcrt2.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcrt2.o" SelfReg="false" NextFile="libaclui.a"/>
+    <ROW File="getopt.h" Component_="accctrl.h" FileName="getopt.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\getopt.h" SelfReg="false" NextFile="gl.h"/>
+    <ROW File="gl.h" Component_="gl.h" FileName="gl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\GL\gl.h" SelfReg="false" NextFile="glext.h"/>
+    <ROW File="glext.h" Component_="gl.h" FileName="glext.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\GL\glext.h" SelfReg="false" NextFile="glu.h"/>
+    <ROW File="glu.h" Component_="gl.h" FileName="glu.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\GL\glu.h" SelfReg="false" NextFile="gmon.h"/>
+    <ROW File="gmon.h" Component_="accctrl.h" FileName="gmon.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\gmon.h" SelfReg="false" NextFile="gmp.h"/>
+    <ROW File="gmp.h" Component_="accctrl.h" FileName="gmp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\gmp.h" SelfReg="false" NextFile="httpext.h"/>
+    <ROW File="gmp.info.txt" Component_="gmp.info1.txt" FileName="gmpinf~3.txt|gmp.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\GMP\gmp.info.txt" SelfReg="false" NextFile="as.info.txt"/>
+    <ROW File="gmp.info1.txt" Component_="gmp.info1.txt" FileName="gmpinf~1.txt|gmp.info-1.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\GMP\gmp.info-1.txt" SelfReg="false" NextFile="gmp.info2.txt"/>
+    <ROW File="gmp.info2.txt" Component_="gmp.info1.txt" FileName="gmpinf~2.txt|gmp.info-2.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\GMP\gmp.info-2.txt" SelfReg="false" NextFile="gmp.info.txt"/>
+    <ROW File="gprof.exe" Component_="gprof.exe" FileName="gprof.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\gprof.exe" SelfReg="false" NextFile="ld.exe"/>
+    <ROW File="gprof.info.txt" Component_="as.info.txt" FileName="gprofi~1.txt|gprof.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\gprof.info.txt" SelfReg="false" NextFile="ld.info.txt"/>
+    <ROW File="gsyslimits.h" Component_="gsyslimits.h" FileName="gsysli~1.h|gsyslimits.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\gsyslimits.h" SelfReg="false" NextFile="emmintrin.h_1"/>
+    <ROW File="hidclass.h" Component_="atm.h" FileName="hidclass.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\hidclass.h" SelfReg="false" NextFile="hidpi.h"/>
+    <ROW File="hidpi.h" Component_="atm.h" FileName="hidpi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\hidpi.h" SelfReg="false" NextFile="hidsdi.h"/>
+    <ROW File="hidsdi.h" Component_="atm.h" FileName="hidsdi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\hidsdi.h" SelfReg="false" NextFile="hidusage.h"/>
+    <ROW File="hidusage.h" Component_="atm.h" FileName="hidusage.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\hidusage.h" SelfReg="false" NextFile="kbdmou.h"/>
+    <ROW File="httpext.h" Component_="accctrl.h" FileName="httpext.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\httpext.h" SelfReg="false" NextFile="icm.h"/>
+    <ROW File="ibm.conf" Component_="bs2000.conf" FileName="ibm~1.con|ibm.conf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\config\ibm.conf" SelfReg="false" NextFile="mf.conf"/>
+    <ROW File="icm.h" Component_="accctrl.h" FileName="icm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\icm.h" SelfReg="false" NextFile="idispids.h"/>
+    <ROW File="idispids.h" Component_="accctrl.h" FileName="idispids.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\idispids.h" SelfReg="false" NextFile="il21dec.h"/>
+    <ROW File="il21dec.h" Component_="accctrl.h" FileName="il21dec.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\il21dec.h" SelfReg="false" NextFile="imagehlp.h"/>
+    <ROW File="imagehlp.h" Component_="accctrl.h" FileName="imagehlp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\imagehlp.h" SelfReg="false" NextFile="imm.h"/>
+    <ROW File="imm.h" Component_="accctrl.h" FileName="imm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\imm.h" SelfReg="false" NextFile="initguid.h"/>
+    <ROW File="initguid.h" Component_="accctrl.h" FileName="initguid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\initguid.h" SelfReg="false" NextFile="intshcut.h"/>
+    <ROW File="intrinsic.h" Component_="byteswap.h" FileName="intrin~1.h|intrinsic.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\intrinsic.h" SelfReg="false" NextFile="move.h"/>
+    <ROW File="intshcut.h" Component_="accctrl.h" FileName="intshcut.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\intshcut.h" SelfReg="false" NextFile="inttypes.h"/>
+    <ROW File="inttypes.h" Component_="accctrl.h" FileName="inttypes.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\inttypes.h" SelfReg="false" NextFile="io.h"/>
+    <ROW File="io.h" Component_="accctrl.h" FileName="io.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\io.h" SelfReg="false" NextFile="ipexport.h"/>
+    <ROW File="ipexport.h" Component_="accctrl.h" FileName="ipexport.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ipexport.h" SelfReg="false" NextFile="iphlpapi.h"/>
+    <ROW File="iphlpapi.h" Component_="accctrl.h" FileName="iphlpapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\iphlpapi.h" SelfReg="false" NextFile="ipifcons.h"/>
+    <ROW File="ipifcons.h" Component_="accctrl.h" FileName="ipifcons.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ipifcons.h" SelfReg="false" NextFile="ipinfoid.h"/>
+    <ROW File="ipinfoid.h" Component_="accctrl.h" FileName="ipinfoid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ipinfoid.h" SelfReg="false" NextFile="iprtrmib.h"/>
+    <ROW File="iprtrmib.h" Component_="accctrl.h" FileName="iprtrmib.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\iprtrmib.h" SelfReg="false" NextFile="iptypes.h"/>
+    <ROW File="iptypes.h" Component_="accctrl.h" FileName="iptypes.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\iptypes.h" SelfReg="false" NextFile="ipxconst.h"/>
+    <ROW File="ipxconst.h" Component_="accctrl.h" FileName="ipxconst.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ipxconst.h" SelfReg="false" NextFile="ipxrtdef.h"/>
+    <ROW File="ipxrtdef.h" Component_="accctrl.h" FileName="ipxrtdef.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ipxrtdef.h" SelfReg="false" NextFile="ipxtfflt.h"/>
+    <ROW File="ipxtfflt.h" Component_="accctrl.h" FileName="ipxtfflt.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ipxtfflt.h" SelfReg="false" NextFile="isguids.h"/>
+    <ROW File="isguids.h" Component_="accctrl.h" FileName="isguids.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\isguids.h" SelfReg="false" NextFile="ks.h"/>
+    <ROW File="iso646.h" Component_="emmintrin.h" FileName="iso646.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\iso646.h" SelfReg="false" NextFile="limits.h_1"/>
+    <ROW File="iso646.h_1" Component_="emmintrin.h_1" FileName="iso646.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\iso646.h" SelfReg="false" NextFile="limits.h_2"/>
+    <ROW File="kbdmou.h" Component_="atm.h" FileName="kbdmou.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\kbdmou.h" SelfReg="false" NextFile="mcd.h"/>
+    <ROW File="ks.h" Component_="accctrl.h" FileName="ks.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ks.h" SelfReg="false" NextFile="ksmedia.h"/>
+    <ROW File="ksmedia.h" Component_="accctrl.h" FileName="ksmedia.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ksmedia.h" SelfReg="false" NextFile="largeint.h"/>
+    <ROW File="largeint.h" Component_="accctrl.h" FileName="largeint.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\largeint.h" SelfReg="false" NextFile="byteswap.h"/>
+    <ROW File="ld.exe" Component_="ld.exe" FileName="ld.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\ld.exe" SelfReg="false" NextFile="libcob1.dll"/>
+    <ROW File="ld.info.txt" Component_="as.info.txt" FileName="ldinfo~1.txt|ld.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\ld.info.txt" SelfReg="false" NextFile="CONTRIBUTORS.txt"/>
+    <ROW File="libaclui.a" Component_="binmode.o" FileName="libaclui.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libaclui.a" SelfReg="false" NextFile="libadvapi32.a"/>
+    <ROW File="libadvapi32.a" Component_="binmode.o" FileName="libadv~1.a|libadvapi32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libadvapi32.a" SelfReg="false" NextFile="libapcups.a"/>
+    <ROW File="libapcups.a" Component_="binmode.o" FileName="libapc~1.a|libapcups.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libapcups.a" SelfReg="false" NextFile="libavicap32.a"/>
+    <ROW File="libavicap32.a" Component_="binmode.o" FileName="libavi~1.a|libavicap32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libavicap32.a" SelfReg="false" NextFile="libavifil32.a"/>
+    <ROW File="libavifil32.a" Component_="binmode.o" FileName="libavi~2.a|libavifil32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libavifil32.a" SelfReg="false" NextFile="libbfd.a"/>
+    <ROW File="libbfd.a" Component_="binmode.o" FileName="libbfd.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libbfd.a" SelfReg="false" NextFile="libbfd.la"/>
+    <ROW File="libbfd.la" Component_="binmode.o" FileName="libbfd.la" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libbfd.la" SelfReg="false" NextFile="libbthprops.a"/>
+    <ROW File="libbthprops.a" Component_="binmode.o" FileName="libbth~1.a|libbthprops.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libbthprops.a" SelfReg="false" NextFile="libcap.a"/>
+    <ROW File="libcap.a" Component_="binmode.o" FileName="libcap.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcap.a" SelfReg="false" NextFile="libcfgmgr32.a"/>
+    <ROW File="libcfgmgr32.a" Component_="binmode.o" FileName="libcfg~1.a|libcfgmgr32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcfgmgr32.a" SelfReg="false" NextFile="libcob.a"/>
+    <ROW File="libcob.a" Component_="binmode.o" FileName="libcob.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcob.a" SelfReg="false" NextFile="libcob.dll.a"/>
+    <ROW File="libcob.dll.a" Component_="binmode.o" FileName="libcob~1.a|libcob.dll.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcob.dll.a" SelfReg="false" NextFile="libcob.la"/>
+    <ROW File="libcob.h" Component_="accctrl.h" FileName="libcob.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob.h" SelfReg="false" NextFile="libgen.h"/>
+    <ROW File="libcob.la" Component_="binmode.o" FileName="libcob.la" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcob.la" SelfReg="false" NextFile="libcoldname.a"/>
+    <ROW File="libcob1.dll" Component_="libcob1.dll" FileName="libcob-1.dll" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\libcob-1.dll" SelfReg="false" NextFile="libdb5.0.dll"/>
+    <ROW File="libcoldname.a" Component_="binmode.o" FileName="libcol~1.a|libcoldname.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcoldname.a" SelfReg="false" NextFile="libcomctl32.a"/>
+    <ROW File="libcomctl32.a" Component_="binmode.o" FileName="libcom~1.a|libcomctl32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcomctl32.a" SelfReg="false" NextFile="libcomdlg32.a"/>
+    <ROW File="libcomdlg32.a" Component_="binmode.o" FileName="libcom~2.a|libcomdlg32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcomdlg32.a" SelfReg="false" NextFile="libcrtdll.a"/>
+    <ROW File="libcrtdll.a" Component_="binmode.o" FileName="libcrt~1.a|libcrtdll.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcrtdll.a" SelfReg="false" NextFile="libcrypt32.a"/>
+    <ROW File="libcrypt32.a" Component_="binmode.o" FileName="libcry~1.a|libcrypt32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libcrypt32.a" SelfReg="false" NextFile="libctl3d32.a"/>
+    <ROW File="libctl3d32.a" Component_="binmode.o" FileName="libctl~1.a|libctl3d32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libctl3d32.a" SelfReg="false" NextFile="libd3d8.a"/>
+    <ROW File="libd3d8.a" Component_="binmode.o" FileName="libd3d8.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libd3d8.a" SelfReg="false" NextFile="libd3d9.a"/>
+    <ROW File="libd3d9.a" Component_="binmode.o" FileName="libd3d9.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libd3d9.a" SelfReg="false" NextFile="libd3dim.a"/>
+    <ROW File="libd3dim.a" Component_="binmode.o" FileName="libd3dim.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libd3dim.a" SelfReg="false" NextFile="libd3drm.a"/>
+    <ROW File="libd3drm.a" Component_="binmode.o" FileName="libd3drm.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libd3drm.a" SelfReg="false" NextFile="libd3dx8d.a"/>
+    <ROW File="libd3dx8d.a" Component_="binmode.o" FileName="libd3d~1.a|libd3dx8d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libd3dx8d.a" SelfReg="false" NextFile="libd3dx9d.a"/>
+    <ROW File="libd3dx9d.a" Component_="binmode.o" FileName="libd3d~2.a|libd3dx9d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libd3dx9d.a" SelfReg="false" NextFile="libd3dxof.a"/>
+    <ROW File="libd3dxof.a" Component_="binmode.o" FileName="libd3d~3.a|libd3dxof.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libd3dxof.a" SelfReg="false" NextFile="libdb5.0.a"/>
+    <ROW File="libdb.a" Component_="binmode.o" FileName="libdb.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdb.a" SelfReg="false" NextFile="libddraw.a"/>
+    <ROW File="libdb5.0.a" Component_="binmode.o" FileName="libdb-~1.a|libdb-5.0.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdb-5.0.a" SelfReg="false" NextFile="libdb5.0.dll.a"/>
+    <ROW File="libdb5.0.dll" Component_="libdb5.0.dll" FileName="libdb-~1.dll|libdb-5.0.dll" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\libdb-5.0.dll" SelfReg="false" NextFile="libgmp10.dll"/>
+    <ROW File="libdb5.0.dll.a" Component_="binmode.o" FileName="libdb-~2.a|libdb-5.0.dll.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdb-5.0.dll.a" SelfReg="false" NextFile="libdb5.0.la"/>
+    <ROW File="libdb5.0.la" Component_="binmode.o" FileName="libdb-~1.la|libdb-5.0.la" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdb-5.0.la" SelfReg="false" NextFile="libdb.a"/>
+    <ROW File="libddraw.a" Component_="binmode.o" FileName="libddraw.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libddraw.a" SelfReg="false" NextFile="libdhcpcsvc.a"/>
+    <ROW File="libdhcpcsvc.a" Component_="binmode.o" FileName="libdhc~1.a|libdhcpcsvc.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdhcpcsvc.a" SelfReg="false" NextFile="libdinput.a"/>
+    <ROW File="libdinput.a" Component_="binmode.o" FileName="libdin~1.a|libdinput.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdinput.a" SelfReg="false" NextFile="libdinput8.a"/>
+    <ROW File="libdinput8.a" Component_="binmode.o" FileName="libdin~2.a|libdinput8.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdinput8.a" SelfReg="false" NextFile="libdlcapi.a"/>
+    <ROW File="libdlcapi.a" Component_="binmode.o" FileName="libdlc~1.a|libdlcapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdlcapi.a" SelfReg="false" NextFile="libdmoguids.a"/>
+    <ROW File="libdmoguids.a" Component_="binmode.o" FileName="libdmo~1.a|libdmoguids.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdmoguids.a" SelfReg="false" NextFile="libdnsapi.a"/>
+    <ROW File="libdnsapi.a" Component_="binmode.o" FileName="libdns~1.a|libdnsapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdnsapi.a" SelfReg="false" NextFile="libdplayx.a"/>
+    <ROW File="libdplayx.a" Component_="binmode.o" FileName="libdpl~1.a|libdplayx.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdplayx.a" SelfReg="false" NextFile="libdpnaddr.a"/>
+    <ROW File="libdpnaddr.a" Component_="binmode.o" FileName="libdpn~1.a|libdpnaddr.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdpnaddr.a" SelfReg="false" NextFile="libdpnet.a"/>
+    <ROW File="libdpnet.a" Component_="binmode.o" FileName="libdpnet.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdpnet.a" SelfReg="false" NextFile="libdpnlobby.a"/>
+    <ROW File="libdpnlobby.a" Component_="binmode.o" FileName="libdpn~2.a|libdpnlobby.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdpnlobby.a" SelfReg="false" NextFile="libdpvoice.a"/>
+    <ROW File="libdpvoice.a" Component_="binmode.o" FileName="libdpv~1.a|libdpvoice.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdpvoice.a" SelfReg="false" NextFile="libdsetup.a"/>
+    <ROW File="libdsetup.a" Component_="binmode.o" FileName="libdse~1.a|libdsetup.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdsetup.a" SelfReg="false" NextFile="libdsound.a"/>
+    <ROW File="libdsound.a" Component_="binmode.o" FileName="libdso~1.a|libdsound.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdsound.a" SelfReg="false" NextFile="libdxapi.a"/>
+    <ROW File="libdxapi.a" Component_="binmode.o" FileName="libdxapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdxapi.a" SelfReg="false" NextFile="libdxerr8.a"/>
+    <ROW File="libdxerr8.a" Component_="binmode.o" FileName="libdxe~1.a|libdxerr8.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdxerr8.a" SelfReg="false" NextFile="libdxerr9.a"/>
+    <ROW File="libdxerr9.a" Component_="binmode.o" FileName="libdxe~2.a|libdxerr9.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdxerr9.a" SelfReg="false" NextFile="libdxguid.a"/>
+    <ROW File="libdxguid.a" Component_="binmode.o" FileName="libdxg~1.a|libdxguid.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libdxguid.a" SelfReg="false" NextFile="libfaultrep.a"/>
+    <ROW File="libfaultrep.a" Component_="binmode.o" FileName="libfau~1.a|libfaultrep.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libfaultrep.a" SelfReg="false" NextFile="libgdi32.a"/>
+    <ROW File="libgcc.a" Component_="crtbegin.o" FileName="libgcc.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\libgcc.a" SelfReg="false" NextFile="libgcov.a"/>
+    <ROW File="libgcov.a" Component_="crtbegin.o" FileName="libgcov.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\libgcov.a" SelfReg="false" NextFile="specs"/>
+    <ROW File="libgdi32.a" Component_="binmode.o" FileName="libgdi32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libgdi32.a" SelfReg="false" NextFile="libglaux.a"/>
+    <ROW File="libgen.h" Component_="accctrl.h" FileName="libgen.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libgen.h" SelfReg="false" NextFile="limits.h"/>
+    <ROW File="libglaux.a" Component_="binmode.o" FileName="libglaux.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libglaux.a" SelfReg="false" NextFile="libglu32.a"/>
+    <ROW File="libglu32.a" Component_="binmode.o" FileName="libglu32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libglu32.a" SelfReg="false" NextFile="libgmon.a"/>
+    <ROW File="libgmon.a" Component_="binmode.o" FileName="libgmon.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libgmon.a" SelfReg="false" NextFile="libgmp.dll.a"/>
+    <ROW File="libgmp.dll.a" Component_="binmode.o" FileName="libgmp~1.a|libgmp.dll.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libgmp.dll.a" SelfReg="false" NextFile="libgmp.la"/>
+    <ROW File="libgmp.la" Component_="binmode.o" FileName="libgmp.la" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libgmp.la" SelfReg="false" NextFile="libhal.a"/>
+    <ROW File="libgmp10.dll" Component_="libgmp10.dll" FileName="libgmp~1.dll|libgmp-10.dll" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\libgmp-10.dll" SelfReg="false" NextFile="mingw32gcc3.4.5"/>
+    <ROW File="libhal.a" Component_="binmode.o" FileName="libhal.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libhal.a" SelfReg="false" NextFile="libhid.a"/>
+    <ROW File="libhid.a" Component_="binmode.o" FileName="libhid.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libhid.a" SelfReg="false" NextFile="libhidparse.a"/>
+    <ROW File="libhidparse.a" Component_="binmode.o" FileName="libhid~1.a|libhidparse.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libhidparse.a" SelfReg="false" NextFile="libiberty.a"/>
+    <ROW File="libiberty.a" Component_="binmode.o" FileName="libibe~1.a|libiberty.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libiberty.a" SelfReg="false" NextFile="libicmui.a"/>
+    <ROW File="libicmui.a" Component_="binmode.o" FileName="libicmui.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libicmui.a" SelfReg="false" NextFile="libigmpagnt.a"/>
+    <ROW File="libigmpagnt.a" Component_="binmode.o" FileName="libigm~1.a|libigmpagnt.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libigmpagnt.a" SelfReg="false" NextFile="libimagehlp.a"/>
+    <ROW File="libimagehlp.a" Component_="binmode.o" FileName="libima~1.a|libimagehlp.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libimagehlp.a" SelfReg="false" NextFile="libimm32.a"/>
+    <ROW File="libimm32.a" Component_="binmode.o" FileName="libimm32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libimm32.a" SelfReg="false" NextFile="libiphlpapi.a"/>
+    <ROW File="libiphlpapi.a" Component_="binmode.o" FileName="libiph~1.a|libiphlpapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libiphlpapi.a" SelfReg="false" NextFile="libkernel32.a"/>
+    <ROW File="libkernel32.a" Component_="binmode.o" FileName="libker~1.a|libkernel32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libkernel32.a" SelfReg="false" NextFile="libksproxy.a"/>
+    <ROW File="libksproxy.a" Component_="binmode.o" FileName="libksp~1.a|libksproxy.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libksproxy.a" SelfReg="false" NextFile="libksuser.a"/>
+    <ROW File="libksuser.a" Component_="binmode.o" FileName="libksu~1.a|libksuser.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libksuser.a" SelfReg="false" NextFile="liblargeint.a"/>
+    <ROW File="liblargeint.a" Component_="binmode.o" FileName="liblar~1.a|liblargeint.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\liblargeint.a" SelfReg="false" NextFile="liblz32.a"/>
+    <ROW File="liblz32.a" Component_="binmode.o" FileName="liblz32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\liblz32.a" SelfReg="false" NextFile="libm.a"/>
+    <ROW File="libm.a" Component_="binmode.o" FileName="libm.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libm.a" SelfReg="false" NextFile="libmapi32.a"/>
+    <ROW File="libmapi32.a" Component_="binmode.o" FileName="libmap~1.a|libmapi32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmapi32.a" SelfReg="false" NextFile="libmcd.a"/>
+    <ROW File="libmcd.a" Component_="binmode.o" FileName="libmcd.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmcd.a" SelfReg="false" NextFile="libmfcuia32.a"/>
+    <ROW File="libmfcuia32.a" Component_="binmode.o" FileName="libmfc~1.a|libmfcuia32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmfcuia32.a" SelfReg="false" NextFile="libmgmtapi.a"/>
+    <ROW File="libmgmtapi.a" Component_="binmode.o" FileName="libmgm~1.a|libmgmtapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmgmtapi.a" SelfReg="false" NextFile="libmingw32.a"/>
+    <ROW File="libmingw32.a" Component_="binmode.o" FileName="libmin~1.a|libmingw32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmingw32.a" SelfReg="false" NextFile="libmingwex.a"/>
+    <ROW File="libmingwex.a" Component_="binmode.o" FileName="libmin~2.a|libmingwex.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmingwex.a" SelfReg="false" NextFile="libmingwthrd.a"/>
+    <ROW File="libmingwthrd.a" Component_="binmode.o" FileName="libmin~3.a|libmingwthrd.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmingwthrd.a" SelfReg="false" NextFile="libmoldname.a"/>
+    <ROW File="libmoldname.a" Component_="binmode.o" FileName="libmol~1.a|libmoldname.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname.a" SelfReg="false" NextFile="libmoldname70.a"/>
+    <ROW File="libmoldname70.a" Component_="binmode.o" FileName="libmol~2.a|libmoldname70.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname70.a" SelfReg="false" NextFile="libmoldname70d.a"/>
+    <ROW File="libmoldname70d.a" Component_="binmode.o" FileName="libmol~3.a|libmoldname70d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname70d.a" SelfReg="false" NextFile="libmoldname71.a"/>
+    <ROW File="libmoldname71.a" Component_="binmode.o" FileName="libmol~4.a|libmoldname71.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname71.a" SelfReg="false" NextFile="libmoldname71d.a"/>
+    <ROW File="libmoldname71d.a" Component_="binmode.o" FileName="libmol~5.a|libmoldname71d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname71d.a" SelfReg="false" NextFile="libmoldname80.a"/>
+    <ROW File="libmoldname80.a" Component_="binmode.o" FileName="libmol~6.a|libmoldname80.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname80.a" SelfReg="false" NextFile="libmoldname80d.a"/>
+    <ROW File="libmoldname80d.a" Component_="binmode.o" FileName="libmol~7.a|libmoldname80d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname80d.a" SelfReg="false" NextFile="libmoldname90.a"/>
+    <ROW File="libmoldname90.a" Component_="binmode.o" FileName="libmol~8.a|libmoldname90.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname90.a" SelfReg="false" NextFile="libmoldname90d.a"/>
+    <ROW File="libmoldname90d.a" Component_="binmode.o" FileName="libmol~9.a|libmoldname90d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldname90d.a" SelfReg="false" NextFile="libmoldnamed.a"/>
+    <ROW File="libmoldnamed.a" Component_="binmode.o" FileName="libmo~10.a|libmoldnamed.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmoldnamed.a" SelfReg="false" NextFile="libmpr.a"/>
+    <ROW File="libmpr.a" Component_="binmode.o" FileName="libmpr.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmpr.a" SelfReg="false" NextFile="libmprapi.a"/>
+    <ROW File="libmprapi.a" Component_="binmode.o" FileName="libmpr~1.a|libmprapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmprapi.a" SelfReg="false" NextFile="libmqrt.a"/>
+    <ROW File="libmqrt.a" Component_="binmode.o" FileName="libmqrt.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmqrt.a" SelfReg="false" NextFile="libmsacm32.a"/>
+    <ROW File="libmsacm32.a" Component_="binmode.o" FileName="libmsa~1.a|libmsacm32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsacm32.a" SelfReg="false" NextFile="libmscms.a"/>
+    <ROW File="libmscms.a" Component_="binmode.o" FileName="libmscms.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmscms.a" SelfReg="false" NextFile="libmsdmo.a"/>
+    <ROW File="libmsdmo.a" Component_="binmode.o" FileName="libmsdmo.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsdmo.a" SelfReg="false" NextFile="libmsimg32.a"/>
+    <ROW File="libmsimg32.a" Component_="binmode.o" FileName="libmsi~1.a|libmsimg32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsimg32.a" SelfReg="false" NextFile="libmsvcp60.a"/>
+    <ROW File="libmsvcp60.a" Component_="binmode.o" FileName="libmsv~1.a|libmsvcp60.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcp60.a" SelfReg="false" NextFile="libmsvcr70.a"/>
+    <ROW File="libmsvcr70.a" Component_="binmode.o" FileName="libmsv~2.a|libmsvcr70.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcr70.a" SelfReg="false" NextFile="libmsvcr70d.a"/>
+    <ROW File="libmsvcr70d.a" Component_="binmode.o" FileName="libmsv~3.a|libmsvcr70d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcr70d.a" SelfReg="false" NextFile="libmsvcr71.a"/>
+    <ROW File="libmsvcr71.a" Component_="binmode.o" FileName="libmsv~4.a|libmsvcr71.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcr71.a" SelfReg="false" NextFile="libmsvcr71d.a"/>
+    <ROW File="libmsvcr71d.a" Component_="binmode.o" FileName="libmsv~5.a|libmsvcr71d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcr71d.a" SelfReg="false" NextFile="libmsvcr80.a"/>
+    <ROW File="libmsvcr80.a" Component_="binmode.o" FileName="libmsv~6.a|libmsvcr80.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcr80.a" SelfReg="false" NextFile="libmsvcr80d.a"/>
+    <ROW File="libmsvcr80d.a" Component_="binmode.o" FileName="libmsv~7.a|libmsvcr80d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcr80d.a" SelfReg="false" NextFile="libmsvcr90.a"/>
+    <ROW File="libmsvcr90.a" Component_="binmode.o" FileName="libmsv~8.a|libmsvcr90.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcr90.a" SelfReg="false" NextFile="libmsvcr90d.a"/>
+    <ROW File="libmsvcr90d.a" Component_="binmode.o" FileName="libmsv~9.a|libmsvcr90d.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcr90d.a" SelfReg="false" NextFile="libmsvcrt.a"/>
+    <ROW File="libmsvcrt.a" Component_="binmode.o" FileName="libms~10.a|libmsvcrt.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcrt.a" SelfReg="false" NextFile="libmsvcrtd.a"/>
+    <ROW File="libmsvcrtd.a" Component_="binmode.o" FileName="libms~11.a|libmsvcrtd.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvcrtd.a" SelfReg="false" NextFile="libmsvfw32.a"/>
+    <ROW File="libmsvfw32.a" Component_="binmode.o" FileName="libms~12.a|libmsvfw32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmsvfw32.a" SelfReg="false" NextFile="libmswsock.a"/>
+    <ROW File="libmswsock.a" Component_="binmode.o" FileName="libmsw~1.a|libmswsock.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libmswsock.a" SelfReg="false" NextFile="libnddeapi.a"/>
+    <ROW File="libnddeapi.a" Component_="binmode.o" FileName="libndd~1.a|libnddeapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libnddeapi.a" SelfReg="false" NextFile="libndis.a"/>
+    <ROW File="libndis.a" Component_="binmode.o" FileName="libndis.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libndis.a" SelfReg="false" NextFile="libnetapi32.a"/>
+    <ROW File="libnetapi32.a" Component_="binmode.o" FileName="libnet~1.a|libnetapi32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libnetapi32.a" SelfReg="false" NextFile="libnewdev.a"/>
+    <ROW File="libnewdev.a" Component_="binmode.o" FileName="libnew~1.a|libnewdev.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libnewdev.a" SelfReg="false" NextFile="libntdll.a"/>
+    <ROW File="libntdll.a" Component_="binmode.o" FileName="libntdll.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libntdll.a" SelfReg="false" NextFile="libntoskrnl.a"/>
+    <ROW File="libntoskrnl.a" Component_="binmode.o" FileName="libnto~1.a|libntoskrnl.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libntoskrnl.a" SelfReg="false" NextFile="libodbc32.a"/>
+    <ROW File="libodbc32.a" Component_="binmode.o" FileName="libodb~1.a|libodbc32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libodbc32.a" SelfReg="false" NextFile="libodbccp32.a"/>
+    <ROW File="libodbccp32.a" Component_="binmode.o" FileName="libodb~2.a|libodbccp32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libodbccp32.a" SelfReg="false" NextFile="libole32.a"/>
+    <ROW File="libole32.a" Component_="binmode.o" FileName="libole32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libole32.a" SelfReg="false" NextFile="liboleacc.a"/>
+    <ROW File="liboleacc.a" Component_="binmode.o" FileName="libole~1.a|liboleacc.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\liboleacc.a" SelfReg="false" NextFile="liboleaut32.a"/>
+    <ROW File="liboleaut32.a" Component_="binmode.o" FileName="libole~2.a|liboleaut32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\liboleaut32.a" SelfReg="false" NextFile="libolecli32.a"/>
+    <ROW File="libolecli32.a" Component_="binmode.o" FileName="libole~3.a|libolecli32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libolecli32.a" SelfReg="false" NextFile="liboledlg.a"/>
+    <ROW File="liboledlg.a" Component_="binmode.o" FileName="libole~4.a|liboledlg.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\liboledlg.a" SelfReg="false" NextFile="libolepro32.a"/>
+    <ROW File="libolepro32.a" Component_="binmode.o" FileName="libole~5.a|libolepro32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libolepro32.a" SelfReg="false" NextFile="libolesvr32.a"/>
+    <ROW File="libolesvr32.a" Component_="binmode.o" FileName="libole~6.a|libolesvr32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libolesvr32.a" SelfReg="false" NextFile="libopcodes.a"/>
+    <ROW File="libopcodes.a" Component_="binmode.o" FileName="libopc~1.a|libopcodes.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libopcodes.a" SelfReg="false" NextFile="libopcodes.la"/>
+    <ROW File="libopcodes.la" Component_="binmode.o" FileName="libopc~1.la|libopcodes.la" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libopcodes.la" SelfReg="false" NextFile="libopengl32.a"/>
+    <ROW File="libopengl32.a" Component_="binmode.o" FileName="libope~1.a|libopengl32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libopengl32.a" SelfReg="false" NextFile="libpdcurses.a"/>
+    <ROW File="libpdcurses.a" Component_="binmode.o" FileName="libpdc~1.a|libpdcurses.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libpdcurses.a" SelfReg="false" NextFile="libpenwin32.a"/>
+    <ROW File="libpenwin32.a" Component_="binmode.o" FileName="libpen~1.a|libpenwin32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libpenwin32.a" SelfReg="false" NextFile="libpkpd32.a"/>
+    <ROW File="libpkpd32.a" Component_="binmode.o" FileName="libpkp~1.a|libpkpd32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libpkpd32.a" SelfReg="false" NextFile="libpowrprof.a"/>
+    <ROW File="libpowrprof.a" Component_="binmode.o" FileName="libpow~1.a|libpowrprof.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libpowrprof.a" SelfReg="false" NextFile="libpsapi.a"/>
+    <ROW File="libpsapi.a" Component_="binmode.o" FileName="libpsapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libpsapi.a" SelfReg="false" NextFile="libquartz.a"/>
+    <ROW File="libquartz.a" Component_="binmode.o" FileName="libqua~1.a|libquartz.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libquartz.a" SelfReg="false" NextFile="librapi.a"/>
+    <ROW File="librapi.a" Component_="binmode.o" FileName="librapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\librapi.a" SelfReg="false" NextFile="librasapi32.a"/>
+    <ROW File="librasapi32.a" Component_="binmode.o" FileName="libras~1.a|librasapi32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\librasapi32.a" SelfReg="false" NextFile="librasdlg.a"/>
+    <ROW File="librasdlg.a" Component_="binmode.o" FileName="libras~2.a|librasdlg.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\librasdlg.a" SelfReg="false" NextFile="librpcdce4.a"/>
+    <ROW File="librpcdce4.a" Component_="binmode.o" FileName="librpc~1.a|librpcdce4.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\librpcdce4.a" SelfReg="false" NextFile="librpcns4.a"/>
+    <ROW File="librpcns4.a" Component_="binmode.o" FileName="librpc~2.a|librpcns4.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\librpcns4.a" SelfReg="false" NextFile="librpcrt4.a"/>
+    <ROW File="librpcrt4.a" Component_="binmode.o" FileName="librpc~3.a|librpcrt4.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\librpcrt4.a" SelfReg="false" NextFile="librtm.a"/>
+    <ROW File="librtm.a" Component_="binmode.o" FileName="librtm.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\librtm.a" SelfReg="false" NextFile="librtutils.a"/>
+    <ROW File="librtutils.a" Component_="binmode.o" FileName="librtu~1.a|librtutils.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\librtutils.a" SelfReg="false" NextFile="libscrnsave.a"/>
+    <ROW File="libscrnsave.a" Component_="binmode.o" FileName="libscr~1.a|libscrnsave.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libscrnsave.a" SelfReg="false" NextFile="libscrnsavw.a"/>
+    <ROW File="libscrnsavw.a" Component_="binmode.o" FileName="libscr~2.a|libscrnsavw.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libscrnsavw.a" SelfReg="false" NextFile="libscsiport.a"/>
+    <ROW File="libscsiport.a" Component_="binmode.o" FileName="libscs~1.a|libscsiport.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libscsiport.a" SelfReg="false" NextFile="libsecur32.a"/>
+    <ROW File="libsecur32.a" Component_="binmode.o" FileName="libsec~1.a|libsecur32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libsecur32.a" SelfReg="false" NextFile="libsetupapi.a"/>
+    <ROW File="libsetupapi.a" Component_="binmode.o" FileName="libset~1.a|libsetupapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libsetupapi.a" SelfReg="false" NextFile="libshell32.a"/>
+    <ROW File="libshell32.a" Component_="binmode.o" FileName="libshe~1.a|libshell32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libshell32.a" SelfReg="false" NextFile="libshfolder.a"/>
+    <ROW File="libshfolder.a" Component_="binmode.o" FileName="libshf~1.a|libshfolder.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libshfolder.a" SelfReg="false" NextFile="libshlwapi.a"/>
+    <ROW File="libshlwapi.a" Component_="binmode.o" FileName="libshl~1.a|libshlwapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libshlwapi.a" SelfReg="false" NextFile="libsnmpapi.a"/>
+    <ROW File="libsnmpapi.a" Component_="binmode.o" FileName="libsnm~1.a|libsnmpapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libsnmpapi.a" SelfReg="false" NextFile="libstrmiids.a"/>
+    <ROW File="libstrmiids.a" Component_="binmode.o" FileName="libstr~1.a|libstrmiids.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libstrmiids.a" SelfReg="false" NextFile="libsvrapi.a"/>
+    <ROW File="libsvrapi.a" Component_="binmode.o" FileName="libsvr~1.a|libsvrapi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libsvrapi.a" SelfReg="false" NextFile="libtapi32.a"/>
+    <ROW File="libtapi32.a" Component_="binmode.o" FileName="libtap~1.a|libtapi32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libtapi32.a" SelfReg="false" NextFile="libtdi.a"/>
+    <ROW File="libtdi.a" Component_="binmode.o" FileName="libtdi.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libtdi.a" SelfReg="false" NextFile="libth32.a"/>
+    <ROW File="libth32.a" Component_="binmode.o" FileName="libth32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libth32.a" SelfReg="false" NextFile="libthunk32.a"/>
+    <ROW File="libthunk32.a" Component_="binmode.o" FileName="libthu~1.a|libthunk32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libthunk32.a" SelfReg="false" NextFile="liburl.a"/>
+    <ROW File="liburl.a" Component_="binmode.o" FileName="liburl.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\liburl.a" SelfReg="false" NextFile="libusbcamd.a"/>
+    <ROW File="libusbcamd.a" Component_="binmode.o" FileName="libusb~1.a|libusbcamd.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libusbcamd.a" SelfReg="false" NextFile="libusbcamd2.a"/>
+    <ROW File="libusbcamd2.a" Component_="binmode.o" FileName="libusb~2.a|libusbcamd2.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libusbcamd2.a" SelfReg="false" NextFile="libuser32.a"/>
+    <ROW File="libuser32.a" Component_="binmode.o" FileName="libuse~1.a|libuser32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libuser32.a" SelfReg="false" NextFile="libuserenv.a"/>
+    <ROW File="libuserenv.a" Component_="binmode.o" FileName="libuse~2.a|libuserenv.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libuserenv.a" SelfReg="false" NextFile="libusp10.a"/>
+    <ROW File="libusp10.a" Component_="binmode.o" FileName="libusp10.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libusp10.a" SelfReg="false" NextFile="libuuid.a"/>
+    <ROW File="libuuid.a" Component_="binmode.o" FileName="libuuid.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libuuid.a" SelfReg="false" NextFile="libuxtheme.a"/>
+    <ROW File="libuxtheme.a" Component_="binmode.o" FileName="libuxt~1.a|libuxtheme.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libuxtheme.a" SelfReg="false" NextFile="libvdmdbg.a"/>
+    <ROW File="libvdmdbg.a" Component_="binmode.o" FileName="libvdm~1.a|libvdmdbg.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libvdmdbg.a" SelfReg="false" NextFile="libversion.a"/>
+    <ROW File="libversion.a" Component_="binmode.o" FileName="libver~1.a|libversion.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libversion.a" SelfReg="false" NextFile="libvfw32.a"/>
+    <ROW File="libvfw32.a" Component_="binmode.o" FileName="libvfw32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libvfw32.a" SelfReg="false" NextFile="libvideoprt.a"/>
+    <ROW File="libvideoprt.a" Component_="binmode.o" FileName="libvid~1.a|libvideoprt.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libvideoprt.a" SelfReg="false" NextFile="libwin32k.a"/>
+    <ROW File="libwin32k.a" Component_="binmode.o" FileName="libwin~1.a|libwin32k.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwin32k.a" SelfReg="false" NextFile="libwin32spl.a"/>
+    <ROW File="libwin32spl.a" Component_="binmode.o" FileName="libwin~2.a|libwin32spl.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwin32spl.a" SelfReg="false" NextFile="libwininet.a"/>
+    <ROW File="libwininet.a" Component_="binmode.o" FileName="libwin~3.a|libwininet.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwininet.a" SelfReg="false" NextFile="libwinmm.a"/>
+    <ROW File="libwinmm.a" Component_="binmode.o" FileName="libwinmm.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwinmm.a" SelfReg="false" NextFile="libwinspool.a"/>
+    <ROW File="libwinspool.a" Component_="binmode.o" FileName="libwin~4.a|libwinspool.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwinspool.a" SelfReg="false" NextFile="libwinstrm.a"/>
+    <ROW File="libwinstrm.a" Component_="binmode.o" FileName="libwin~5.a|libwinstrm.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwinstrm.a" SelfReg="false" NextFile="libwldap32.a"/>
+    <ROW File="libwldap32.a" Component_="binmode.o" FileName="libwld~1.a|libwldap32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwldap32.a" SelfReg="false" NextFile="libwow32.a"/>
+    <ROW File="libwow32.a" Component_="binmode.o" FileName="libwow32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwow32.a" SelfReg="false" NextFile="libws2_32.a"/>
+    <ROW File="libws2_32.a" Component_="binmode.o" FileName="libws2~1.a|libws2_32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libws2_32.a" SelfReg="false" NextFile="libwsnmp32.a"/>
+    <ROW File="libwsnmp32.a" Component_="binmode.o" FileName="libwsn~1.a|libwsnmp32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwsnmp32.a" SelfReg="false" NextFile="libwsock32.a"/>
+    <ROW File="libwsock32.a" Component_="binmode.o" FileName="libwso~1.a|libwsock32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwsock32.a" SelfReg="false" NextFile="libwst.a"/>
+    <ROW File="libwst.a" Component_="binmode.o" FileName="libwst.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwst.a" SelfReg="false" NextFile="libwtsapi32.a"/>
+    <ROW File="libwtsapi32.a" Component_="binmode.o" FileName="libwts~1.a|libwtsapi32.a" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\libwtsapi32.a" SelfReg="false" NextFile="txtmode.o"/>
+    <ROW File="license_db.html" Component_="license_db.html" FileName="licens~1.htm|license_db.html" Attributes="1" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\Berkeley DB\license_db.html" SelfReg="false" NextFile="gmp.info1.txt"/>
+    <ROW File="limits.h" Component_="accctrl.h" FileName="limits.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\limits.h" SelfReg="false" NextFile="lm.h"/>
+    <ROW File="limits.h_1" Component_="emmintrin.h" FileName="limits.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\limits.h" SelfReg="false" NextFile="mmintrin.h"/>
+    <ROW File="limits.h_2" Component_="emmintrin.h_1" FileName="limits.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\limits.h" SelfReg="false" NextFile="mmintrin.h_1"/>
+    <ROW File="lm.h" Component_="accctrl.h" FileName="lm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lm.h" SelfReg="false" NextFile="lmaccess.h"/>
+    <ROW File="lmaccess.h" Component_="accctrl.h" FileName="lmaccess.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmaccess.h" SelfReg="false" NextFile="lmalert.h"/>
+    <ROW File="lmalert.h" Component_="accctrl.h" FileName="lmalert.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmalert.h" SelfReg="false" NextFile="lmapibuf.h"/>
+    <ROW File="lmapibuf.h" Component_="accctrl.h" FileName="lmapibuf.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmapibuf.h" SelfReg="false" NextFile="lmat.h"/>
+    <ROW File="lmat.h" Component_="accctrl.h" FileName="lmat.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmat.h" SelfReg="false" NextFile="lmaudit.h"/>
+    <ROW File="lmaudit.h" Component_="accctrl.h" FileName="lmaudit.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmaudit.h" SelfReg="false" NextFile="lmbrowsr.h"/>
+    <ROW File="lmbrowsr.h" Component_="accctrl.h" FileName="lmbrowsr.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmbrowsr.h" SelfReg="false" NextFile="lmchdev.h"/>
+    <ROW File="lmchdev.h" Component_="accctrl.h" FileName="lmchdev.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmchdev.h" SelfReg="false" NextFile="lmconfig.h"/>
+    <ROW File="lmconfig.h" Component_="accctrl.h" FileName="lmconfig.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmconfig.h" SelfReg="false" NextFile="lmcons.h"/>
+    <ROW File="lmcons.h" Component_="accctrl.h" FileName="lmcons.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmcons.h" SelfReg="false" NextFile="lmerr.h"/>
+    <ROW File="lmerr.h" Component_="accctrl.h" FileName="lmerr.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmerr.h" SelfReg="false" NextFile="lmerrlog.h"/>
+    <ROW File="lmerrlog.h" Component_="accctrl.h" FileName="lmerrlog.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmerrlog.h" SelfReg="false" NextFile="lmmsg.h"/>
+    <ROW File="lmmsg.h" Component_="accctrl.h" FileName="lmmsg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmmsg.h" SelfReg="false" NextFile="lmremutl.h"/>
+    <ROW File="lmremutl.h" Component_="accctrl.h" FileName="lmremutl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmremutl.h" SelfReg="false" NextFile="lmrepl.h"/>
+    <ROW File="lmrepl.h" Component_="accctrl.h" FileName="lmrepl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmrepl.h" SelfReg="false" NextFile="lmserver.h"/>
+    <ROW File="lmserver.h" Component_="accctrl.h" FileName="lmserver.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmserver.h" SelfReg="false" NextFile="lmshare.h"/>
+    <ROW File="lmshare.h" Component_="accctrl.h" FileName="lmshare.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmshare.h" SelfReg="false" NextFile="lmsname.h"/>
+    <ROW File="lmsname.h" Component_="accctrl.h" FileName="lmsname.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmsname.h" SelfReg="false" NextFile="lmstats.h"/>
+    <ROW File="lmstats.h" Component_="accctrl.h" FileName="lmstats.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmstats.h" SelfReg="false" NextFile="lmsvc.h"/>
+    <ROW File="lmsvc.h" Component_="accctrl.h" FileName="lmsvc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmsvc.h" SelfReg="false" NextFile="lmuse.h"/>
+    <ROW File="lmuse.h" Component_="accctrl.h" FileName="lmuse.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmuse.h" SelfReg="false" NextFile="lmuseflg.h"/>
+    <ROW File="lmuseflg.h" Component_="accctrl.h" FileName="lmuseflg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmuseflg.h" SelfReg="false" NextFile="lmwksta.h"/>
+    <ROW File="lmwksta.h" Component_="accctrl.h" FileName="lmwksta.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lmwksta.h" SelfReg="false" NextFile="locale.h"/>
+    <ROW File="locale.h" Component_="accctrl.h" FileName="locale.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\locale.h" SelfReg="false" NextFile="lzexpand.h"/>
+    <ROW File="locking.h" Component_="fcntl.h" FileName="locking.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\locking.h" SelfReg="false" NextFile="param.h"/>
+    <ROW File="lzexpand.h" Component_="accctrl.h" FileName="lzexpand.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\lzexpand.h" SelfReg="false" NextFile="malloc.h"/>
+    <ROW File="malloc.h" Component_="accctrl.h" FileName="malloc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\malloc.h" SelfReg="false" NextFile="mapi.h"/>
+    <ROW File="mapi.h" Component_="accctrl.h" FileName="mapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mapi.h" SelfReg="false" NextFile="math.h"/>
+    <ROW File="math.h" Component_="accctrl.h" FileName="math.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\math.h" SelfReg="false" NextFile="mbctype.h"/>
+    <ROW File="mathtest.cbl" Component_="bintest.cbl" FileName="mathtest.cbl" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\samples\mathtest.cbl" SelfReg="false" NextFile="OCic.cbl"/>
+    <ROW File="mbctype.h" Component_="accctrl.h" FileName="mbctype.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mbctype.h" SelfReg="false" NextFile="mbstring.h"/>
+    <ROW File="mbstring.h" Component_="accctrl.h" FileName="mbstring.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mbstring.h" SelfReg="false" NextFile="mciavi.h"/>
+    <ROW File="mcd.h" Component_="atm.h" FileName="mcd.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\mcd.h" SelfReg="false" NextFile="miniport.h"/>
+    <ROW File="mciavi.h" Component_="accctrl.h" FileName="mciavi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mciavi.h" SelfReg="false" NextFile="mcx.h"/>
+    <ROW File="mcx.h" Component_="accctrl.h" FileName="mcx.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mcx.h" SelfReg="false" NextFile="mem.h"/>
+    <ROW File="mem.h" Component_="accctrl.h" FileName="mem.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mem.h" SelfReg="false" NextFile="memory.h"/>
+    <ROW File="memory.h" Component_="accctrl.h" FileName="memory.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\memory.h" SelfReg="false" NextFile="mgm.h"/>
+    <ROW File="mf.conf" Component_="bs2000.conf" FileName="mf~1.con|mf.conf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\config\mf.conf" SelfReg="false" NextFile="mvs.conf"/>
+    <ROW File="mgm.h" Component_="accctrl.h" FileName="mgm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mgm.h" SelfReg="false" NextFile="mgmtapi.h"/>
+    <ROW File="mgmtapi.h" Component_="accctrl.h" FileName="mgmtapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mgmtapi.h" SelfReg="false" NextFile="mlang.h"/>
+    <ROW File="mingw32gcc.exe" Component_="mingw32gcc.exe" FileName="mingw3~1.exe|mingw32-gcc.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\mingw32-gcc.exe" SelfReg="false" NextFile="mingwm10.dll"/>
+    <ROW File="mingw32gcc3.4.5" Component_="cobconfig" FileName="mingw3~1.5|mingw32-gcc-3.4.5" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\mingw32-gcc-3.4.5" SelfReg="false" NextFile="mingw32gcc.exe"/>
+    <ROW File="mingwm10.dll" Component_="mingwm10.dll" FileName="mingwm10.dll" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\mingwm10.dll" SelfReg="false" NextFile="nm.exe"/>
+    <ROW File="miniport.h" Component_="atm.h" FileName="miniport.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\miniport.h" SelfReg="false" NextFile="minitape.h"/>
+    <ROW File="minitape.h" Component_="atm.h" FileName="minitape.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\minitape.h" SelfReg="false" NextFile="mountdev.h"/>
+    <ROW File="mkheaders.conf" Component_="gsyslimits.h" FileName="mkhead~1.con|mkheaders.conf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\mkheaders.conf" SelfReg="false" NextFile="libgcc.a"/>
+    <ROW File="mlang.h" Component_="accctrl.h" FileName="mlang.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mlang.h" SelfReg="false" NextFile="mmreg.h"/>
+    <ROW File="mm_malloc.h" Component_="emmintrin.h" FileName="mm_mal~1.h|mm_malloc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\mm_malloc.h" SelfReg="false" NextFile="pmmintrin.h"/>
+    <ROW File="mm_malloc.h_1" Component_="emmintrin.h_1" FileName="mm_mal~1.h|mm_malloc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\mm_malloc.h" SelfReg="false" NextFile="pmmintrin.h_1"/>
+    <ROW File="mmintrin.h" Component_="emmintrin.h" FileName="mmintrin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\mmintrin.h" SelfReg="false" NextFile="mm_malloc.h"/>
+    <ROW File="mmintrin.h_1" Component_="emmintrin.h_1" FileName="mmintrin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\mmintrin.h" SelfReg="false" NextFile="mm_malloc.h_1"/>
+    <ROW File="mmreg.h" Component_="accctrl.h" FileName="mmreg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mmreg.h" SelfReg="false" NextFile="mmsystem.h"/>
+    <ROW File="mmsystem.h" Component_="accctrl.h" FileName="mmsystem.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mmsystem.h" SelfReg="false" NextFile="mpegtype.h"/>
+    <ROW File="mountdev.h" Component_="atm.h" FileName="mountdev.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\mountdev.h" SelfReg="false" NextFile="mountmgr.h"/>
+    <ROW File="mountmgr.h" Component_="atm.h" FileName="mountmgr.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\mountmgr.h" SelfReg="false" NextFile="ndis.h"/>
+    <ROW File="move.h" Component_="byteswap.h" FileName="move.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\move.h" SelfReg="false" NextFile="numeric.h"/>
+    <ROW File="mpegtype.h" Component_="accctrl.h" FileName="mpegtype.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mpegtype.h" SelfReg="false" NextFile="mprapi.h"/>
+    <ROW File="mprapi.h" Component_="accctrl.h" FileName="mprapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mprapi.h" SelfReg="false" NextFile="mq.h"/>
+    <ROW File="mq.h" Component_="accctrl.h" FileName="mq.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mq.h" SelfReg="false" NextFile="msacm.h"/>
+    <ROW File="msacm.h" Component_="accctrl.h" FileName="msacm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\msacm.h" SelfReg="false" NextFile="mshtml.h"/>
+    <ROW File="mshtml.h" Component_="accctrl.h" FileName="mshtml.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mshtml.h" SelfReg="false" NextFile="mswsock.h"/>
+    <ROW File="mswsock.h" Component_="accctrl.h" FileName="mswsock.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\mswsock.h" SelfReg="false" NextFile="nb30.h"/>
+    <ROW File="mvs.conf" Component_="bs2000.conf" FileName="mvs~1.con|mvs.conf" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\config\mvs.conf" SelfReg="false" NextFile="FileStatMsgs.cpy"/>
+    <ROW File="nb30.h" Component_="accctrl.h" FileName="nb30.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\nb30.h" SelfReg="false" NextFile="nddeapi.h"/>
+    <ROW File="nddeapi.h" Component_="accctrl.h" FileName="nddeapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\nddeapi.h" SelfReg="false" NextFile="nspapi.h"/>
+    <ROW File="ndis.h" Component_="atm.h" FileName="ndis.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ndis.h" SelfReg="false" NextFile="ndisguid.h"/>
+    <ROW File="ndisguid.h" Component_="atm.h" FileName="ndisguid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ndisguid.h" SelfReg="false" NextFile="ndistapi.h"/>
+    <ROW File="ndistapi.h" Component_="atm.h" FileName="ndistapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ndistapi.h" SelfReg="false" NextFile="ndiswan.h"/>
+    <ROW File="ndiswan.h" Component_="atm.h" FileName="ndiswan.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ndiswan.h" SelfReg="false" NextFile="netevent.h"/>
+    <ROW File="netevent.h" Component_="atm.h" FileName="netevent.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\netevent.h" SelfReg="false" NextFile="netpnp.h"/>
+    <ROW File="netpnp.h" Component_="atm.h" FileName="netpnp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\netpnp.h" SelfReg="false" NextFile="newdev.h"/>
+    <ROW File="newdev.h" Component_="atm.h" FileName="newdev.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\newdev.h" SelfReg="false" NextFile="ntapi.h"/>
+    <ROW File="nm.exe" Component_="nm.exe" FileName="nm.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\nm.exe" SelfReg="false" NextFile="objcopy.exe"/>
+    <ROW File="nspapi.h" Component_="accctrl.h" FileName="nspapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\nspapi.h" SelfReg="false" NextFile="ntdef.h"/>
+    <ROW File="ntapi.h" Component_="atm.h" FileName="ntapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntapi.h" SelfReg="false" NextFile="ntdd8042.h"/>
+    <ROW File="ntdd8042.h" Component_="atm.h" FileName="ntdd8042.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntdd8042.h" SelfReg="false" NextFile="ntddbeep.h"/>
+    <ROW File="ntddbeep.h" Component_="atm.h" FileName="ntddbeep.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddbeep.h" SelfReg="false" NextFile="ntddcdrm.h"/>
+    <ROW File="ntddcdrm.h" Component_="atm.h" FileName="ntddcdrm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddcdrm.h" SelfReg="false" NextFile="ntddcdvd.h"/>
+    <ROW File="ntddcdvd.h" Component_="atm.h" FileName="ntddcdvd.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddcdvd.h" SelfReg="false" NextFile="ntddchgr.h"/>
+    <ROW File="ntddchgr.h" Component_="atm.h" FileName="ntddchgr.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddchgr.h" SelfReg="false" NextFile="ntdddisk.h"/>
+    <ROW File="ntdddisk.h" Component_="atm.h" FileName="ntdddisk.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntdddisk.h" SelfReg="false" NextFile="ntddk.h"/>
+    <ROW File="ntddk.h" Component_="atm.h" FileName="ntddk.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddk.h" SelfReg="false" NextFile="ntddkbd.h"/>
+    <ROW File="ntddkbd.h" Component_="atm.h" FileName="ntddkbd.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddkbd.h" SelfReg="false" NextFile="ntddmou.h"/>
+    <ROW File="ntddmou.h" Component_="atm.h" FileName="ntddmou.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddmou.h" SelfReg="false" NextFile="ntddndis.h"/>
+    <ROW File="ntddndis.h" Component_="atm.h" FileName="ntddndis.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddndis.h" SelfReg="false" NextFile="ntddpar.h"/>
+    <ROW File="ntddpar.h" Component_="atm.h" FileName="ntddpar.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddpar.h" SelfReg="false" NextFile="ntddpcm.h"/>
+    <ROW File="ntddpcm.h" Component_="atm.h" FileName="ntddpcm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddpcm.h" SelfReg="false" NextFile="ntddscsi.h"/>
+    <ROW File="ntddscsi.h" Component_="atm.h" FileName="ntddscsi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddscsi.h" SelfReg="false" NextFile="ntddser.h"/>
+    <ROW File="ntddser.h" Component_="atm.h" FileName="ntddser.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddser.h" SelfReg="false" NextFile="ntddstor.h"/>
+    <ROW File="ntddstor.h" Component_="atm.h" FileName="ntddstor.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddstor.h" SelfReg="false" NextFile="ntddtape.h"/>
+    <ROW File="ntddtape.h" Component_="atm.h" FileName="ntddtape.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddtape.h" SelfReg="false" NextFile="ntddtdi.h"/>
+    <ROW File="ntddtdi.h" Component_="atm.h" FileName="ntddtdi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddtdi.h" SelfReg="false" NextFile="ntddvdeo.h"/>
+    <ROW File="ntddvdeo.h" Component_="atm.h" FileName="ntddvdeo.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddvdeo.h" SelfReg="false" NextFile="ntddvol.h"/>
+    <ROW File="ntddvol.h" Component_="atm.h" FileName="ntddvol.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntddvol.h" SelfReg="false" NextFile="ntifs.h"/>
+    <ROW File="ntdef.h" Component_="accctrl.h" FileName="ntdef.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ntdef.h" SelfReg="false" NextFile="ntdll.h"/>
+    <ROW File="ntdll.h" Component_="accctrl.h" FileName="ntdll.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ntdll.h" SelfReg="false" NextFile="ntdsapi.h"/>
+    <ROW File="ntdsapi.h" Component_="accctrl.h" FileName="ntdsapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ntdsapi.h" SelfReg="false" NextFile="ntdsbcli.h"/>
+    <ROW File="ntdsbcli.h" Component_="accctrl.h" FileName="ntdsbcli.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ntdsbcli.h" SelfReg="false" NextFile="ntldap.h"/>
+    <ROW File="ntifs.h" Component_="atm.h" FileName="ntifs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntifs.h" SelfReg="false" NextFile="ntpoapi.h"/>
+    <ROW File="ntldap.h" Component_="accctrl.h" FileName="ntldap.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ntldap.h" SelfReg="false" NextFile="ntsecapi.h"/>
+    <ROW File="ntpoapi.h" Component_="atm.h" FileName="ntpoapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntpoapi.h" SelfReg="false" NextFile="ntstatus.h"/>
+    <ROW File="ntsecapi.h" Component_="accctrl.h" FileName="ntsecapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ntsecapi.h" SelfReg="false" NextFile="ntsecpkg.h"/>
+    <ROW File="ntsecpkg.h" Component_="accctrl.h" FileName="ntsecpkg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ntsecpkg.h" SelfReg="false" NextFile="oaidl.h"/>
+    <ROW File="ntstatus.h" Component_="atm.h" FileName="ntstatus.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ntstatus.h" SelfReg="false" NextFile="parallel.h"/>
+    <ROW File="numeric.h" Component_="byteswap.h" FileName="numeric.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\numeric.h" SelfReg="false" NextFile="screenio.h"/>
+    <ROW File="oaidl.h" Component_="accctrl.h" FileName="oaidl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\oaidl.h" SelfReg="false" NextFile="objbase.h"/>
+    <ROW File="objbase.h" Component_="accctrl.h" FileName="objbase.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\objbase.h" SelfReg="false" NextFile="objfwd.h"/>
+    <ROW File="objcopy.exe" Component_="objcopy.exe" FileName="objcopy.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\objcopy.exe" SelfReg="false" NextFile="objdump.exe"/>
+    <ROW File="objdump.exe" Component_="objdump.exe" FileName="objdump.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\objdump.exe" SelfReg="false" NextFile="OCic.exe"/>
+    <ROW File="objfwd.h" Component_="accctrl.h" FileName="objfwd.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\objfwd.h" SelfReg="false" NextFile="objidl.h"/>
+    <ROW File="objidl.h" Component_="accctrl.h" FileName="objidl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\objidl.h" SelfReg="false" NextFile="objsafe.h"/>
+    <ROW File="objsafe.h" Component_="accctrl.h" FileName="objsafe.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\objsafe.h" SelfReg="false" NextFile="objsel.h"/>
+    <ROW File="objsel.h" Component_="accctrl.h" FileName="objsel.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\objsel.h" SelfReg="false" NextFile="ocidl.h"/>
+    <ROW File="ocidl.h" Component_="accctrl.h" FileName="ocidl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ocidl.h" SelfReg="false" NextFile="odbcinst.h"/>
+    <ROW File="odbcinst.h" Component_="accctrl.h" FileName="odbcinst.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\odbcinst.h" SelfReg="false" NextFile="ole.h"/>
+    <ROW File="ole.h" Component_="accctrl.h" FileName="ole.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ole.h" SelfReg="false" NextFile="ole2.h"/>
+    <ROW File="ole2.h" Component_="accctrl.h" FileName="ole2.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ole2.h" SelfReg="false" NextFile="ole2ver.h"/>
+    <ROW File="ole2ver.h" Component_="accctrl.h" FileName="ole2ver.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ole2ver.h" SelfReg="false" NextFile="oleacc.h"/>
+    <ROW File="oleacc.h" Component_="accctrl.h" FileName="oleacc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\oleacc.h" SelfReg="false" NextFile="oleauto.h"/>
+    <ROW File="oleauto.h" Component_="accctrl.h" FileName="oleauto.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\oleauto.h" SelfReg="false" NextFile="olectl.h"/>
+    <ROW File="olectl.h" Component_="accctrl.h" FileName="olectl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\olectl.h" SelfReg="false" NextFile="olectlid.h"/>
+    <ROW File="olectlid.h" Component_="accctrl.h" FileName="olectlid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\olectlid.h" SelfReg="false" NextFile="oledlg.h"/>
+    <ROW File="oledlg.h" Component_="accctrl.h" FileName="oledlg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\oledlg.h" SelfReg="false" NextFile="oleidl.h"/>
+    <ROW File="oleidl.h" Component_="accctrl.h" FileName="oleidl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\oleidl.h" SelfReg="false" NextFile="panel.h"/>
+    <ROW File="opencobol.info.txt" Component_="opencobol.info.txt" FileName="open-c~1.txt|open-cobol.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\OpenCOBOL 1.1\open-cobol.info.txt" SelfReg="false" NextFile="OpenCOBOL1.106FEB2009BuildGuideForMinGW.pdf"/>
+    <ROW File="panel.h" Component_="accctrl.h" FileName="panel.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\panel.h" SelfReg="false" NextFile="pbt.h"/>
+    <ROW File="parallel.h" Component_="atm.h" FileName="parallel.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\parallel.h" SelfReg="false" NextFile="pfhook.h"/>
+    <ROW File="param.h" Component_="fcntl.h" FileName="param.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\param.h" SelfReg="false" NextFile="stat.h"/>
+    <ROW File="pbt.h" Component_="accctrl.h" FileName="pbt.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\pbt.h" SelfReg="false" NextFile="pdcurses.h"/>
+    <ROW File="pdcurses.dll" Component_="pdcurses.dll" FileName="pdcurses.dll" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\pdcurses.dll" SelfReg="false" NextFile="ranlib.exe"/>
+    <ROW File="pdcurses.h" Component_="accctrl.h" FileName="pdcurses.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\pdcurses.h" SelfReg="false" NextFile="poppack.h"/>
+    <ROW File="pfhook.h" Component_="atm.h" FileName="pfhook.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\pfhook.h" SelfReg="false" NextFile="poclass.h"/>
+    <ROW File="pmmintrin.h" Component_="emmintrin.h" FileName="pmmint~1.h|pmmintrin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\pmmintrin.h" SelfReg="false" NextFile="README"/>
+    <ROW File="pmmintrin.h_1" Component_="emmintrin.h_1" FileName="pmmint~1.h|pmmintrin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\pmmintrin.h" SelfReg="false" NextFile="README_1"/>
+    <ROW File="poclass.h" Component_="atm.h" FileName="poclass.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\poclass.h" SelfReg="false" NextFile="scsi.h"/>
+    <ROW File="poppack.h" Component_="accctrl.h" FileName="poppack.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\poppack.h" SelfReg="false" NextFile="powrprof.h"/>
+    <ROW File="powrprof.h" Component_="accctrl.h" FileName="powrprof.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\powrprof.h" SelfReg="false" NextFile="process.h"/>
+    <ROW File="process.h" Component_="accctrl.h" FileName="process.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\process.h" SelfReg="false" NextFile="profil.h"/>
+    <ROW File="profil.h" Component_="accctrl.h" FileName="profil.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\profil.h" SelfReg="false" NextFile="profile.h"/>
+    <ROW File="profile.h" Component_="accctrl.h" FileName="profile.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\profile.h" SelfReg="false" NextFile="prsht.h"/>
+    <ROW File="prsht.h" Component_="accctrl.h" FileName="prsht.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\prsht.h" SelfReg="false" NextFile="psapi.h"/>
+    <ROW File="psapi.h" Component_="accctrl.h" FileName="psapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\psapi.h" SelfReg="false" NextFile="pshpack1.h"/>
+    <ROW File="pshpack1.h" Component_="accctrl.h" FileName="pshpack1.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\pshpack1.h" SelfReg="false" NextFile="pshpack2.h"/>
+    <ROW File="pshpack2.h" Component_="accctrl.h" FileName="pshpack2.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\pshpack2.h" SelfReg="false" NextFile="pshpack4.h"/>
+    <ROW File="pshpack4.h" Component_="accctrl.h" FileName="pshpack4.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\pshpack4.h" SelfReg="false" NextFile="pshpack8.h"/>
+    <ROW File="pshpack8.h" Component_="accctrl.h" FileName="pshpack8.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\pshpack8.h" SelfReg="false" NextFile="qedit.h"/>
+    <ROW File="qedit.h" Component_="accctrl.h" FileName="qedit.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\qedit.h" SelfReg="false" NextFile="rapi.h"/>
+    <ROW File="ranlib.exe" Component_="ranlib.exe" FileName="ranlib.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\ranlib.exe" SelfReg="false" NextFile="readelf.exe"/>
+    <ROW File="rapi.h" Component_="accctrl.h" FileName="rapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rapi.h" SelfReg="false" NextFile="ras.h"/>
+    <ROW File="ras.h" Component_="accctrl.h" FileName="ras.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ras.h" SelfReg="false" NextFile="rasdlg.h"/>
+    <ROW File="rasdlg.h" Component_="accctrl.h" FileName="rasdlg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rasdlg.h" SelfReg="false" NextFile="raserror.h"/>
+    <ROW File="raserror.h" Component_="accctrl.h" FileName="raserror.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\raserror.h" SelfReg="false" NextFile="rassapi.h"/>
+    <ROW File="rassapi.h" Component_="accctrl.h" FileName="rassapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rassapi.h" SelfReg="false" NextFile="reason.h"/>
+    <ROW File="readelf.exe" Component_="readelf.exe" FileName="readelf.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\readelf.exe" SelfReg="false" NextFile="size.exe"/>
+    <ROW File="reason.h" Component_="accctrl.h" FileName="reason.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\reason.h" SelfReg="false" NextFile="regstr.h"/>
+    <ROW File="regstr.h" Component_="accctrl.h" FileName="regstr.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\regstr.h" SelfReg="false" NextFile="richedit.h"/>
+    <ROW File="richedit.h" Component_="accctrl.h" FileName="richedit.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\richedit.h" SelfReg="false" NextFile="richole.h"/>
+    <ROW File="richole.h" Component_="accctrl.h" FileName="richole.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\richole.h" SelfReg="false" NextFile="routprot.h"/>
+    <ROW File="routprot.h" Component_="accctrl.h" FileName="routprot.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\routprot.h" SelfReg="false" NextFile="rpc.h"/>
+    <ROW File="rpc.h" Component_="accctrl.h" FileName="rpc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpc.h" SelfReg="false" NextFile="rpcdce.h"/>
+    <ROW File="rpcdce.h" Component_="accctrl.h" FileName="rpcdce.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpcdce.h" SelfReg="false" NextFile="rpcdce2.h"/>
+    <ROW File="rpcdce2.h" Component_="accctrl.h" FileName="rpcdce2.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpcdce2.h" SelfReg="false" NextFile="rpcdcep.h"/>
+    <ROW File="rpcdcep.h" Component_="accctrl.h" FileName="rpcdcep.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpcdcep.h" SelfReg="false" NextFile="rpcndr.h"/>
+    <ROW File="rpcndr.h" Component_="accctrl.h" FileName="rpcndr.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpcndr.h" SelfReg="false" NextFile="rpcnsi.h"/>
+    <ROW File="rpcnsi.h" Component_="accctrl.h" FileName="rpcnsi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpcnsi.h" SelfReg="false" NextFile="rpcnsip.h"/>
+    <ROW File="rpcnsip.h" Component_="accctrl.h" FileName="rpcnsip.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpcnsip.h" SelfReg="false" NextFile="rpcnterr.h"/>
+    <ROW File="rpcnterr.h" Component_="accctrl.h" FileName="rpcnterr.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpcnterr.h" SelfReg="false" NextFile="rpcproxy.h"/>
+    <ROW File="rpcproxy.h" Component_="accctrl.h" FileName="rpcproxy.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rpcproxy.h" SelfReg="false" NextFile="rtutils.h"/>
+    <ROW File="rtutils.h" Component_="accctrl.h" FileName="rtutils.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\rtutils.h" SelfReg="false" NextFile="schannel.h"/>
+    <ROW File="schannel.h" Component_="accctrl.h" FileName="schannel.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\schannel.h" SelfReg="false" NextFile="schnlsp.h"/>
+    <ROW File="schnlsp.h" Component_="accctrl.h" FileName="schnlsp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\schnlsp.h" SelfReg="false" NextFile="scrnsave.h"/>
+    <ROW File="screenio.cpy" Component_="FileStatMsgs.cpy" FileName="screenio.cpy" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\copy\screenio.cpy" SelfReg="false" NextFile="sqlca.cpy"/>
+    <ROW File="screenio.h" Component_="byteswap.h" FileName="screenio.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\screenio.h" SelfReg="false" NextFile="strings.h"/>
+    <ROW File="scrnsave.h" Component_="accctrl.h" FileName="scrnsave.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\scrnsave.h" SelfReg="false" NextFile="sddl.h"/>
+    <ROW File="scsi.h" Component_="atm.h" FileName="scsi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\scsi.h" SelfReg="false" NextFile="scsiscan.h"/>
+    <ROW File="scsiscan.h" Component_="atm.h" FileName="scsiscan.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\scsiscan.h" SelfReg="false" NextFile="scsiwmi.h"/>
+    <ROW File="scsiwmi.h" Component_="atm.h" FileName="scsiwmi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\scsiwmi.h" SelfReg="false" NextFile="smbus.h"/>
+    <ROW File="sddl.h" Component_="accctrl.h" FileName="sddl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sddl.h" SelfReg="false" NextFile="search.h"/>
+    <ROW File="search.h" Component_="accctrl.h" FileName="search.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\search.h" SelfReg="false" NextFile="secext.h"/>
+    <ROW File="secext.h" Component_="accctrl.h" FileName="secext.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\secext.h" SelfReg="false" NextFile="security.h"/>
+    <ROW File="security.h" Component_="accctrl.h" FileName="security.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\security.h" SelfReg="false" NextFile="servprov.h"/>
+    <ROW File="servprov.h" Component_="accctrl.h" FileName="servprov.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\servprov.h" SelfReg="false" NextFile="setjmp.h"/>
+    <ROW File="setjmp.h" Component_="accctrl.h" FileName="setjmp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\setjmp.h" SelfReg="false" NextFile="setupapi.h"/>
+    <ROW File="setupapi.h" Component_="accctrl.h" FileName="setupapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\setupapi.h" SelfReg="false" NextFile="share.h"/>
+    <ROW File="share.h" Component_="accctrl.h" FileName="share.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\share.h" SelfReg="false" NextFile="shellapi.h"/>
+    <ROW File="shellapi.h" Component_="accctrl.h" FileName="shellapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\shellapi.h" SelfReg="false" NextFile="shldisp.h"/>
+    <ROW File="shldisp.h" Component_="accctrl.h" FileName="shldisp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\shldisp.h" SelfReg="false" NextFile="shlguid.h"/>
+    <ROW File="shlguid.h" Component_="accctrl.h" FileName="shlguid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\shlguid.h" SelfReg="false" NextFile="shlobj.h"/>
+    <ROW File="shlobj.h" Component_="accctrl.h" FileName="shlobj.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\shlobj.h" SelfReg="false" NextFile="shlwapi.h"/>
+    <ROW File="shlwapi.h" Component_="accctrl.h" FileName="shlwapi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\shlwapi.h" SelfReg="false" NextFile="signal.h"/>
+    <ROW File="signal.h" Component_="accctrl.h" FileName="signal.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\signal.h" SelfReg="false" NextFile="snmp.h"/>
+    <ROW File="size.exe" Component_="size.exe" FileName="size.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\size.exe" SelfReg="false" NextFile="strings.exe"/>
+    <ROW File="smbus.h" Component_="atm.h" FileName="smbus.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\smbus.h" SelfReg="false" NextFile="srb.h"/>
+    <ROW File="snmp.h" Component_="accctrl.h" FileName="snmp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\snmp.h" SelfReg="false" NextFile="specstrings.h"/>
+    <ROW File="specs" Component_="crtbegin.o" FileName="specs" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\specs" SelfReg="false" NextFile="gcrt1.o"/>
+    <ROW File="specstrings.h" Component_="accctrl.h" FileName="specst~1.h|specstrings.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\specstrings.h" SelfReg="false" NextFile="sql.h"/>
+    <ROW File="sql.h" Component_="accctrl.h" FileName="sql.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sql.h" SelfReg="false" NextFile="sqlext.h"/>
+    <ROW File="sqlca.cpy" Component_="FileStatMsgs.cpy" FileName="sqlca.cpy" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\copy\sqlca.cpy" SelfReg="false" NextFile="sqlda.cpy"/>
+    <ROW File="sqlda.cpy" Component_="FileStatMsgs.cpy" FileName="sqlda.cpy" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\copy\sqlda.cpy" SelfReg="false" NextFile="STREAMIOcb.cpy"/>
+    <ROW File="sqlext.h" Component_="accctrl.h" FileName="sqlext.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sqlext.h" SelfReg="false" NextFile="sqltypes.h"/>
+    <ROW File="sqltypes.h" Component_="accctrl.h" FileName="sqltypes.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sqltypes.h" SelfReg="false" NextFile="sqlucode.h"/>
+    <ROW File="sqlucode.h" Component_="accctrl.h" FileName="sqlucode.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sqlucode.h" SelfReg="false" NextFile="sspi.h"/>
+    <ROW File="srb.h" Component_="atm.h" FileName="srb.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\srb.h" SelfReg="false" NextFile="storport.h"/>
+    <ROW File="sspi.h" Component_="accctrl.h" FileName="sspi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sspi.h" SelfReg="false" NextFile="stdint.h"/>
+    <ROW File="standards.info.txt" Component_="as.info.txt" FileName="standa~1.txt|standards.info.txt" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\documentation\MinGW and GNU\standards.info.txt" SelfReg="false" NextFile="opencobol.info.txt"/>
+    <ROW File="stat.h" Component_="fcntl.h" FileName="stat.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\stat.h" SelfReg="false" NextFile="time.h"/>
+    <ROW File="stdarg.h" Component_="emmintrin.h" FileName="stdarg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\stdarg.h" SelfReg="false" NextFile="stdbool.h"/>
+    <ROW File="stdarg.h_1" Component_="emmintrin.h_1" FileName="stdarg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\stdarg.h" SelfReg="false" NextFile="stdbool.h_1"/>
+    <ROW File="stdbool.h" Component_="emmintrin.h" FileName="stdbool.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\stdbool.h" SelfReg="false" NextFile="stddef.h"/>
+    <ROW File="stdbool.h_1" Component_="emmintrin.h_1" FileName="stdbool.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\stdbool.h" SelfReg="false" NextFile="stddef.h_1"/>
+    <ROW File="stddef.h" Component_="emmintrin.h" FileName="stddef.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\stddef.h" SelfReg="false" NextFile="syslimits.h"/>
+    <ROW File="stddef.h_1" Component_="emmintrin.h_1" FileName="stddef.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\stddef.h" SelfReg="false" NextFile="unwind.h_1"/>
+    <ROW File="stdint.h" Component_="accctrl.h" FileName="stdint.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\stdint.h" SelfReg="false" NextFile="stdio.h"/>
+    <ROW File="stdio.h" Component_="accctrl.h" FileName="stdio.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\stdio.h" SelfReg="false" NextFile="stdlib.h"/>
+    <ROW File="stdlib.h" Component_="accctrl.h" FileName="stdlib.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\stdlib.h" SelfReg="false" NextFile="stm.h"/>
+    <ROW File="stm.h" Component_="accctrl.h" FileName="stm.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\stm.h" SelfReg="false" NextFile="string.h"/>
+    <ROW File="storport.h" Component_="atm.h" FileName="storport.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\storport.h" SelfReg="false" NextFile="tdi.h"/>
+    <ROW File="string.h" Component_="accctrl.h" FileName="string.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\string.h" SelfReg="false" NextFile="strings.h_1"/>
+    <ROW File="strings.exe" Component_="strings.exe" FileName="strings.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\strings.exe" SelfReg="false" NextFile="strip.exe"/>
+    <ROW File="strings.h" Component_="byteswap.h" FileName="strings.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\strings.h" SelfReg="false" NextFile="system.def"/>
+    <ROW File="strings.h_1" Component_="accctrl.h" FileName="strings.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\strings.h" SelfReg="false" NextFile="strmif.h"/>
+    <ROW File="strip.exe" Component_="strip.exe" FileName="strip.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\strip.exe" SelfReg="false" NextFile="windmc.exe"/>
+    <ROW File="strmif.h" Component_="accctrl.h" FileName="strmif.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\strmif.h" SelfReg="false" NextFile="subauth.h"/>
+    <ROW File="subauth.h" Component_="accctrl.h" FileName="subauth.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\subauth.h" SelfReg="false" NextFile="svcguid.h"/>
+    <ROW File="svcguid.h" Component_="accctrl.h" FileName="svcguid.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\svcguid.h" SelfReg="false" NextFile="symcat.h"/>
+    <ROW File="symcat.h" Component_="accctrl.h" FileName="symcat.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\symcat.h" SelfReg="false" NextFile="fcntl.h_1"/>
+    <ROW File="syslimits.h" Component_="emmintrin.h" FileName="syslim~1.h|syslimits.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\syslimits.h" SelfReg="false" NextFile="unwind.h"/>
+    <ROW File="system.def" Component_="byteswap.h" FileName="system.def" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\system.def" SelfReg="false" NextFile="termio.h"/>
+    <ROW File="tchar.h" Component_="accctrl.h" FileName="tchar.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\tchar.h" SelfReg="false" NextFile="term.h"/>
+    <ROW File="tdi.h" Component_="atm.h" FileName="tdi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\tdi.h" SelfReg="false" NextFile="tdiinfo.h"/>
+    <ROW File="tdiinfo.h" Component_="atm.h" FileName="tdiinfo.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\tdiinfo.h" SelfReg="false" NextFile="tdikrnl.h"/>
+    <ROW File="tdikrnl.h" Component_="atm.h" FileName="tdikrnl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\tdikrnl.h" SelfReg="false" NextFile="tdistat.h"/>
+    <ROW File="tdistat.h" Component_="atm.h" FileName="tdistat.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\tdistat.h" SelfReg="false" NextFile="tvout.h"/>
+    <ROW File="term.h" Component_="accctrl.h" FileName="term.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\term.h" SelfReg="false" NextFile="time.h_1"/>
+    <ROW File="termio.h" Component_="byteswap.h" FileName="termio.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\libcob\termio.h" SelfReg="false" NextFile="libcob.h"/>
+    <ROW File="time.h" Component_="fcntl.h" FileName="time.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\time.h" SelfReg="false" NextFile="timeb.h"/>
+    <ROW File="time.h_1" Component_="accctrl.h" FileName="time.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\time.h" SelfReg="false" NextFile="tlhelp32.h"/>
+    <ROW File="timeb.h" Component_="fcntl.h" FileName="timeb.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\timeb.h" SelfReg="false" NextFile="types.h"/>
+    <ROW File="tlhelp32.h" Component_="accctrl.h" FileName="tlhelp32.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\tlhelp32.h" SelfReg="false" NextFile="tmschema.h"/>
+    <ROW File="tmschema.h" Component_="accctrl.h" FileName="tmschema.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\tmschema.h" SelfReg="false" NextFile="unistd.h_1"/>
+    <ROW File="tvout.h" Component_="atm.h" FileName="tvout.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\tvout.h" SelfReg="false" NextFile="upssvc.h"/>
+    <ROW File="txtmode.o" Component_="binmode.o" FileName="txtmode.o" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\txtmode.o" SelfReg="false" NextFile="bintest.cbl"/>
+    <ROW File="types.h" Component_="fcntl.h" FileName="types.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\types.h" SelfReg="false" NextFile="unistd.h"/>
+    <ROW File="unistd.h" Component_="fcntl.h" FileName="unistd.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\unistd.h" SelfReg="false" NextFile="utime.h"/>
+    <ROW File="unistd.h_1" Component_="accctrl.h" FileName="unistd.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\unistd.h" SelfReg="false" NextFile="unknwn.h"/>
+    <ROW File="unknwn.h" Component_="accctrl.h" FileName="unknwn.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\unknwn.h" SelfReg="false" NextFile="userenv.h"/>
+    <ROW File="unwind.h" Component_="emmintrin.h" FileName="unwind.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\unwind.h" SelfReg="false" NextFile="varargs.h_1"/>
+    <ROW File="unwind.h_1" Component_="emmintrin.h_1" FileName="unwind.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\unwind.h" SelfReg="false" NextFile="varargs.h_2"/>
+    <ROW File="upssvc.h" Component_="atm.h" FileName="upssvc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\upssvc.h" SelfReg="false" NextFile="usb.h"/>
+    <ROW File="usb.h" Component_="atm.h" FileName="usb.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\usb.h" SelfReg="false" NextFile="usb100.h"/>
+    <ROW File="usb100.h" Component_="atm.h" FileName="usb100.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\usb100.h" SelfReg="false" NextFile="usbcamdi.h"/>
+    <ROW File="usbcamdi.h" Component_="atm.h" FileName="usbcamdi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\usbcamdi.h" SelfReg="false" NextFile="usbdi.h"/>
+    <ROW File="usbdi.h" Component_="atm.h" FileName="usbdi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\usbdi.h" SelfReg="false" NextFile="usbioctl.h"/>
+    <ROW File="usbioctl.h" Component_="atm.h" FileName="usbioctl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\usbioctl.h" SelfReg="false" NextFile="usbiodef.h"/>
+    <ROW File="usbiodef.h" Component_="atm.h" FileName="usbiodef.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\usbiodef.h" SelfReg="false" NextFile="usbscan.h"/>
+    <ROW File="usbscan.h" Component_="atm.h" FileName="usbscan.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\usbscan.h" SelfReg="false" NextFile="usbuser.h"/>
+    <ROW File="usbuser.h" Component_="atm.h" FileName="usbuser.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\usbuser.h" SelfReg="false" NextFile="video.h"/>
+    <ROW File="userenv.h" Component_="accctrl.h" FileName="userenv.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\userenv.h" SelfReg="false" NextFile="usp10.h"/>
+    <ROW File="usp10.h" Component_="accctrl.h" FileName="usp10.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\usp10.h" SelfReg="false" NextFile="utime.h_1"/>
+    <ROW File="utime.h" Component_="fcntl.h" FileName="utime.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\sys\utime.h" SelfReg="false" NextFile="tchar.h"/>
+    <ROW File="utime.h_1" Component_="accctrl.h" FileName="utime.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\utime.h" SelfReg="false" NextFile="uxtheme.h"/>
+    <ROW File="uxtheme.h" Component_="accctrl.h" FileName="uxtheme.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\uxtheme.h" SelfReg="false" NextFile="values.h"/>
+    <ROW File="values.h" Component_="accctrl.h" FileName="values.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\values.h" SelfReg="false" NextFile="varargs.h"/>
+    <ROW File="varargs.h" Component_="accctrl.h" FileName="varargs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\varargs.h" SelfReg="false" NextFile="vfw.h"/>
+    <ROW File="varargs.h_1" Component_="emmintrin.h" FileName="varargs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\varargs.h" SelfReg="false" NextFile="xmmintrin.h"/>
+    <ROW File="varargs.h_2" Component_="emmintrin.h_1" FileName="varargs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\varargs.h" SelfReg="false" NextFile="xmmintrin.h_1"/>
+    <ROW File="vfw.h" Component_="accctrl.h" FileName="vfw.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\vfw.h" SelfReg="false" NextFile="vidcap.h"/>
+    <ROW File="vidcap.h" Component_="accctrl.h" FileName="vidcap.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\vidcap.h" SelfReg="false" NextFile="vmr9.h"/>
+    <ROW File="video.h" Component_="atm.h" FileName="video.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\video.h" SelfReg="false" NextFile="videoagp.h"/>
+    <ROW File="videoagp.h" Component_="atm.h" FileName="videoagp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\videoagp.h" SelfReg="false" NextFile="win2k.h"/>
+    <ROW File="vmr9.h" Component_="accctrl.h" FileName="vmr9.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\vmr9.h" SelfReg="false" NextFile="vptype.h"/>
+    <ROW File="vptype.h" Component_="accctrl.h" FileName="vptype.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\vptype.h" SelfReg="false" NextFile="w32api.h"/>
+    <ROW File="w32api.h" Component_="accctrl.h" FileName="w32api.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\w32api.h" SelfReg="false" NextFile="wchar.h"/>
+    <ROW File="wchar.h" Component_="accctrl.h" FileName="wchar.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wchar.h" SelfReg="false" NextFile="wctype.h"/>
+    <ROW File="wctype.h" Component_="accctrl.h" FileName="wctype.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wctype.h" SelfReg="false" NextFile="winable.h"/>
+    <ROW File="win2k.h" Component_="atm.h" FileName="win2k.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\win2k.h" SelfReg="false" NextFile="winddi.h"/>
+    <ROW File="winable.h" Component_="accctrl.h" FileName="winable.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winable.h" SelfReg="false" NextFile="winbase.h"/>
+    <ROW File="winbase.h" Component_="accctrl.h" FileName="winbase.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winbase.h" SelfReg="false" NextFile="winber.h"/>
+    <ROW File="winber.h" Component_="accctrl.h" FileName="winber.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winber.h" SelfReg="false" NextFile="wincon.h"/>
+    <ROW File="wincon.h" Component_="accctrl.h" FileName="wincon.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wincon.h" SelfReg="false" NextFile="wincrypt.h"/>
+    <ROW File="wincrypt.h" Component_="accctrl.h" FileName="wincrypt.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wincrypt.h" SelfReg="false" NextFile="windef.h"/>
+    <ROW File="winddi.h" Component_="atm.h" FileName="winddi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\winddi.h" SelfReg="false" NextFile="winddk.h"/>
+    <ROW File="winddk.h" Component_="atm.h" FileName="winddk.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\winddk.h" SelfReg="false" NextFile="winnt4.h"/>
+    <ROW File="windef.h" Component_="accctrl.h" FileName="windef.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\windef.h" SelfReg="false" NextFile="windns.h"/>
+    <ROW File="windmc.exe" Component_="windmc.exe" FileName="windmc.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\windmc.exe" SelfReg="false" NextFile="windres.exe"/>
+    <ROW File="windns.h" Component_="accctrl.h" FileName="windns.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\windns.h" SelfReg="false" NextFile="windows.h"/>
+    <ROW File="windows.h" Component_="accctrl.h" FileName="windows.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\windows.h" SelfReg="false" NextFile="windowsx.h"/>
+    <ROW File="windowsx.h" Component_="accctrl.h" FileName="windowsx.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\windowsx.h" SelfReg="false" NextFile="winerror.h"/>
+    <ROW File="windres.exe" Component_="windres.exe" FileName="windres.exe" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\bin\windres.exe" SelfReg="false" NextFile="bs2000.conf"/>
+    <ROW File="winerror.h" Component_="accctrl.h" FileName="winerror.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winerror.h" SelfReg="false" NextFile="wingdi.h"/>
+    <ROW File="wingdi.h" Component_="accctrl.h" FileName="wingdi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wingdi.h" SelfReg="false" NextFile="wininet.h"/>
+    <ROW File="wininet.h" Component_="accctrl.h" FileName="wininet.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wininet.h" SelfReg="false" NextFile="winioctl.h"/>
+    <ROW File="winioctl.h" Component_="accctrl.h" FileName="winioctl.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winioctl.h" SelfReg="false" NextFile="winldap.h"/>
+    <ROW File="winldap.h" Component_="accctrl.h" FileName="winldap.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winldap.h" SelfReg="false" NextFile="winnetwk.h"/>
+    <ROW File="winnetwk.h" Component_="accctrl.h" FileName="winnetwk.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winnetwk.h" SelfReg="false" NextFile="winnls.h"/>
+    <ROW File="winnls.h" Component_="accctrl.h" FileName="winnls.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winnls.h" SelfReg="false" NextFile="winnt.h"/>
+    <ROW File="winnt.h" Component_="accctrl.h" FileName="winnt.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winnt.h" SelfReg="false" NextFile="winperf.h"/>
+    <ROW File="winnt4.h" Component_="atm.h" FileName="winnt4.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\winnt4.h" SelfReg="false" NextFile="winxp.h"/>
+    <ROW File="winperf.h" Component_="accctrl.h" FileName="winperf.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winperf.h" SelfReg="false" NextFile="winreg.h"/>
+    <ROW File="winreg.h" Component_="accctrl.h" FileName="winreg.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winreg.h" SelfReg="false" NextFile="winresrc.h"/>
+    <ROW File="winresrc.h" Component_="accctrl.h" FileName="winresrc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winresrc.h" SelfReg="false" NextFile="winsnmp.h"/>
+    <ROW File="winsnmp.h" Component_="accctrl.h" FileName="winsnmp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winsnmp.h" SelfReg="false" NextFile="winsock.h"/>
+    <ROW File="winsock.h" Component_="accctrl.h" FileName="winsock.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winsock.h" SelfReg="false" NextFile="winsock2.h"/>
+    <ROW File="winsock2.h" Component_="accctrl.h" FileName="winsock2.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winsock2.h" SelfReg="false" NextFile="winspool.h"/>
+    <ROW File="winspool.h" Component_="accctrl.h" FileName="winspool.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winspool.h" SelfReg="false" NextFile="winsvc.h"/>
+    <ROW File="winsvc.h" Component_="accctrl.h" FileName="winsvc.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winsvc.h" SelfReg="false" NextFile="winuser.h"/>
+    <ROW File="winuser.h" Component_="accctrl.h" FileName="winuser.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winuser.h" SelfReg="false" NextFile="winver.h"/>
+    <ROW File="winver.h" Component_="accctrl.h" FileName="winver.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\winver.h" SelfReg="false" NextFile="ws2spi.h"/>
+    <ROW File="winxp.h" Component_="atm.h" FileName="winxp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\winxp.h" SelfReg="false" NextFile="ws2san.h"/>
+    <ROW File="ws2san.h" Component_="atm.h" FileName="ws2san.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\ws2san.h" SelfReg="false" NextFile="xfilter.h"/>
+    <ROW File="ws2spi.h" Component_="accctrl.h" FileName="ws2spi.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ws2spi.h" SelfReg="false" NextFile="ws2tcpip.h"/>
+    <ROW File="ws2tcpip.h" Component_="accctrl.h" FileName="ws2tcpip.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ws2tcpip.h" SelfReg="false" NextFile="wsahelp.h"/>
+    <ROW File="wsahelp.h" Component_="accctrl.h" FileName="wsahelp.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wsahelp.h" SelfReg="false" NextFile="wsipx.h"/>
+    <ROW File="wsipx.h" Component_="accctrl.h" FileName="wsipx.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wsipx.h" SelfReg="false" NextFile="wsnetbs.h"/>
+    <ROW File="wsnetbs.h" Component_="accctrl.h" FileName="wsnetbs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wsnetbs.h" SelfReg="false" NextFile="wtsapi32.h"/>
+    <ROW File="wtsapi32.h" Component_="accctrl.h" FileName="wtsapi32.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wtsapi32.h" SelfReg="false" NextFile="wtypes.h"/>
+    <ROW File="wtypes.h" Component_="accctrl.h" FileName="wtypes.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\wtypes.h" SelfReg="false" NextFile="xprtdefs.h"/>
+    <ROW File="xfilter.h" Component_="atm.h" FileName="xfilter.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\ddk\xfilter.h" SelfReg="false" NextFile="devguid.h"/>
+    <ROW File="xmmintrin.h" Component_="emmintrin.h" FileName="xmmint~1.h|xmmintrin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\include\xmmintrin.h" SelfReg="false" NextFile="gsyslimits.h"/>
+    <ROW File="xmmintrin.h_1" Component_="emmintrin.h_1" FileName="xmmint~1.h|xmmintrin.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\lib\gcc\mingw32\3.4.5\install-tools\include\xmmintrin.h" SelfReg="false" NextFile="mkheaders.conf"/>
+    <ROW File="xprtdefs.h" Component_="accctrl.h" FileName="xprtdefs.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\xprtdefs.h" SelfReg="false" NextFile="zmouse.h"/>
+    <ROW File="zmouse.h" Component_="accctrl.h" FileName="zmouse.h" Attributes="0" SourcePath="OpenCOBOL-1.1-06FEB2009-mingw\include\zmouse.h" SelfReg="false" NextFile="_mingw.h"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="OpenCobol-1.1" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ATTRIBUTE name="FixedSizeBitmaps" value="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_ResolveLocalizedCredentials" Type="1" Source="aicustact.dll" Target="GetLocalizedCredentials"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiEnvComponent">
+    <ROW Environment="COB_CONFIG_DIR" Name="=-COB_CONFIG_DIR" Value="[APPDIR]config" Component_="ProductInformation"/>
+    <ROW Environment="COB_COPY_DIR" Name="=-COB_COPY_DIR" Value="[APPDIR]copy" Component_="ProductInformation"/>
+    <ROW Environment="COB_LIBRARY_PATH" Name="=-COB_LIBRARY_PATH" Value="[APPDIR]bin" Component_="ProductInformation"/>
+    <ROW Environment="COB_SCREEN_ESC" Name="=-COB_SCREEN_ESC" Value="Y" Component_="ProductInformation"/>
+    <ROW Environment="COB_SCREEN_EXCEPTIONS" Name="=-COB_SCREEN_EXCEPTIONS" Value="Y" Component_="ProductInformation"/>
+    <ROW Environment="PATH" Name="=-Path" Value="[~];[APPDIR]bin" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="opencobol.exe" SourcePath="opencobol.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_ResolveLocalizedCredentials" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_ResolveLocalizedCredentials" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+</DOCUMENT>
